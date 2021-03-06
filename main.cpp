@@ -7,13 +7,17 @@
 
 #include <iostream>
 #include <fstream>
-#include "Store.h"
+#include <string>
+
+#include "Store.cpp"
+
 using namespace std;
 
 //-------------------------- main -------------------------------------------
 
 int main()
 {
+    // Create infile for the inventory 
     ifstream infileInventory("hw4inventory.txt");
     if (!infileInventory)
     {
@@ -21,6 +25,7 @@ int main()
         return 1;
     }
 
+    // Create infile for the customers 
     ifstream infileCustomers("hw4customers.txt");
     if (!infileCustomers)
     {
@@ -30,14 +35,6 @@ int main()
 
     Store st1;
 
-    //Parse through the customer files to create the customer objects.
-    while (infileCustomers.peek() != EOF) {
-
-        string fileInput;
-        getline(infileCustomers, fileInput);
-        // Do something to parse the line of input here
-
-    }
 
     cout << "hello world" << endl;
 
