@@ -35,6 +35,8 @@ int main()
 
     Store st1;
 
+    st1.buildCustomerList(infileCustomers);
+
 
     cout << "hello world" << endl;
 

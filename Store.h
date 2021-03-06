@@ -9,6 +9,8 @@
 
 #include <iostream>
 #include <fstream>
+#include "Customer.cpp"
+#include "SearchTreeCustomers.cpp"
 
 
 using namespace std;
@@ -17,11 +19,16 @@ class Store
 {
 
 private:
+    SearchTreeCustomers bstCustomers;
+
 public:
 
     Store(); //constructor
     ~Store(); //deconstructor
     void buildCustomerList(ifstream &infile);
+
+
+    cout << "look at tree" << endl;
  
 
 };

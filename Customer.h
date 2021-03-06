@@ -33,4 +33,10 @@ public:
     // Preconditions: Two objects of the same class
     // Postconditions: Determines the lesser than Object from customers
     bool operator<(const Customer &rhs) const;
+
+    ///--------------------------------- operator== ------------------------------------
+    // 
+    // Preconditions: 
+    // Postconditions: 
+    bool operator==(const Customer &rhs) const; 
 };

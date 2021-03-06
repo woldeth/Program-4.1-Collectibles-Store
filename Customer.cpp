@@ -28,3 +28,12 @@ bool Customer::operator<(const Customer &rhs) const
     cout << "They are the same customer" << endl;
     return false;
 }
+
+///--------------------------------- operator== ------------------------------------
+//
+// Preconditions:
+// Postconditions:
+bool Customer::operator==(const Customer &rhs) const
+{
+    return (name == rhs.name && id == rhs.id);
+}
