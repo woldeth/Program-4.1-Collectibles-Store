@@ -10,6 +10,10 @@
 #include <string>
 
 #include "Store.cpp"
+#include "Item.h"
+#include "Coin.cpp"
+
+
 
 using namespace std;
 
@@ -33,10 +37,23 @@ int main()
         return 1;
     }
 
-    Store st1;      // create the store object
+    // Store st1;      // create the store object
 
-    st1.buildCustomerList(infileCustomers); // creates all customer object and stores in bst
-    
+    // st1.buildCustomerList(infileCustomers); // creates all customer object and stores in bst
+
+    Item *ptr; 
+    Item *ptr1; 
+
+
+    //coin(char i, int q, int y, int g, string t)
+
+    ptr = new Coin('M', 1, 1996, 100, "Tomas coin");
+    ptr1 = new Coin('M', 1, 1997, 101, "abc");
+
+
+
+
+
 
     return 0;
 }

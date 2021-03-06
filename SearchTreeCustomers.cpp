@@ -7,7 +7,7 @@
 
 #include "SearchTreeCustomers.h"
 
-SearchTreeCustomers::SearchTreeCustomers() : root(nullptr) {}
+
 
 SearchTreeCustomers::~SearchTreeCustomers()
 {

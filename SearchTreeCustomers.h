@@ -16,7 +16,7 @@ class SearchTreeCustomers
 {
 public:
     //Constructors and destructor
-    SearchTreeCustomers();  // Constructor creates a BST new root
+    SearchTreeCustomers() : root(nullptr) {}  // Constructor creates a BST new root
     ~SearchTreeCustomers(); // Destructor
 
     ///--------------------------------- Insert ------------------------------------

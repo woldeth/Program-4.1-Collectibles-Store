@@ -21,7 +21,7 @@ bool Customer::operator<(const Customer &rhs) const
 
     if (name > rhs.name)
     {
-        cout << name << " < " << rhs.name << ": " << (name > rhs.name) << endl;
+        cout << name << " > " << rhs.name << ": " << (name > rhs.name) << endl;
         return false;
     }
 

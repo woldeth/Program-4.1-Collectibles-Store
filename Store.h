@@ -12,7 +12,6 @@
 #include "Customer.cpp"
 #include "SearchTreeCustomers.cpp"
 
-
 using namespace std;
 
 class Store
@@ -22,10 +21,13 @@ private:
     SearchTreeCustomers bstCustomers;
 
 public:
-
-    Store(); //constructor
+    Store();  //constructor
     ~Store(); //deconstructor
+
+    ///--------------------------------- BuildCustomerList ------------------------------------
+    // Initalizes customerList
+    // Preconditions: infile has been successfully opened and the file contains
+    //                 properly formated data (according to the program specs)
+    // Postconditions: All customers have been identifed and put into customerList
     void buildCustomerList(ifstream &infile);
-
-
 };
