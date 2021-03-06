@@ -28,7 +28,4 @@ public:
     void buildCustomerList(ifstream &infile);
 
 
-    cout << "look at tree" << endl;
- 
-
 };
