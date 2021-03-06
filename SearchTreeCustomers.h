@@ -43,11 +43,11 @@ private:
     void insertPrivate(Customer *ptr, Node *&node, bool &flag);
 
 
-    // ///--------------------------------- makeEmpty ------------------------------------
-    // // clears all dynamicall allocated memory
-    // // Preconditions: none
-    // // Postconditions: bst is cleared out completely
-    // void makeEmpty();
+    ///--------------------------------- clear ------------------------------------
+    // clears all dynamicall allocated memory
+    // Preconditions: none
+    // Postconditions: bst is cleared out completely
+    void clear(Node *&node);
 
     // ///--------------------------------- traverseInorder ------------------------------------
     // // Traverse the customer tree to print out all transactions

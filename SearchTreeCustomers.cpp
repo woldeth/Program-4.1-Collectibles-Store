@@ -11,6 +11,24 @@ SearchTreeCustomers::SearchTreeCustomers() : root(nullptr) {}
 
 SearchTreeCustomers::~SearchTreeCustomers()
 {
+    clear(root);
+}
+
+void SearchTreeCustomers::clear(Node *&node)
+{
+    if (node == nullptr)
+    {
+        return;
+    }
+
+    clear(node->left);
+    clear(node->right);
+
+    delete node->item;
+    node->item = nullptr;
+
+    delete node;
+    node = nullptr;
 }
 
 bool SearchTreeCustomers::insert(Customer *ptr)

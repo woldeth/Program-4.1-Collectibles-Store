@@ -33,12 +33,10 @@ int main()
         return 1;
     }
 
-    Store st1;
+    Store st1;      // create the store object
 
-    st1.buildCustomerList(infileCustomers);
-
-
-    cout << "hello world" << endl;
+    st1.buildCustomerList(infileCustomers); // creates all customer object and stores in bst
+    
 
     return 0;
 }

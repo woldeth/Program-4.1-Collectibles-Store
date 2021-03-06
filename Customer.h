@@ -26,7 +26,7 @@ public:
     Customer(int i, string n) : id(i), name(n) {}
 
     // Destructor
-    ~Customer();
+    ~Customer(){}
 
     ///--------------------------------- operator< ------------------------------------
     // Defines lesser than operator for Customer
