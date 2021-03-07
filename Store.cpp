@@ -67,7 +67,6 @@ void Store::buildInventory(ifstream &infile)
 
         char inventoryType = iT[0];	
         Item *dummyPtr = HashMap.get(inventoryType);
-
         
         if(dummyPtr == nullptr){
             getline(infile, iT);
@@ -82,8 +81,7 @@ void Store::buildInventory(ifstream &infile)
     
         Item *newItem = dummyPtr->create(infile);
 
-        
-
+        inventoryTrees[(newItem->id - 'A')].insert(newItem);
 
 
     }

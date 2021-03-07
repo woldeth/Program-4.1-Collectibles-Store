@@ -17,6 +17,7 @@
 #include "ComicBook.cpp"
 #include "SportCard.cpp"
 
+const int ALPHA = 26;  //number of letters
 
 using namespace std;
 
@@ -25,7 +26,7 @@ class Store
 
 private:
     SearchTreeCustomers bstCustomers;
-    SearchTreeItems bstCoin, bstCB, bstSC;
+    SearchTreeItems inventoryTrees [ALPHA];
     HashTable HashMap;
 
 
