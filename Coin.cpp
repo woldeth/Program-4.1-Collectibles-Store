@@ -17,7 +17,6 @@ void Coin::toString() const
          << ", GRADE: " << grade << ", TYPE: " << type << endl;
 }
 
-
 ///--------------------------------- operator< ------------------------------------
 // Defines lesser than operator for coin
 // Preconditions: Two objects of the same subclass
@@ -37,7 +36,9 @@ bool Coin::operator<(const Item &rhs) const
     else if ((type == rhsS.type) && (year == rhsS.year) && (grade < rhsS.grade))
     {
         return true;
-    }else if ((type == rhsS.type) && (year == rhsS.year) && (grade == rhsS.grade)){
+    }
+    else if ((type == rhsS.type) && (year == rhsS.year) && (grade == rhsS.grade))
+    {
         cout << "we are the same coin" << endl;
         return false;
     }
@@ -54,4 +55,33 @@ bool Coin::operator==(const Item &rhs) const
     const Coin &rhsS = static_cast<const Coin &>(rhs);
 
     return (type == rhsS.type) && (year == rhsS.year) && (grade == rhsS.grade);
+}
+
+Item *Coin::create(ifstream &infile)
+{
+    int qty;
+    int year;
+    int grade;
+    string type; 
+
+    string stringQTY;
+    string stringYear;
+    string stringGrade;
+
+    getline(infile, stringQTY, ','); //get count
+    qty = atoi(stringQTY.c_str());
+    infile.get();                       //discard space
+
+    getline(infile, stringYear, ','); //get count
+    year = atoi(stringYear.c_str());
+    infile.get();                       //discard space
+
+    getline(infile, stringGrade, ','); //get count
+    grade = atoi(stringGrade.c_str());
+    infile.get();                       //discard space
+
+    getline(infile, type, '\n'); //get count
+
+
+    return new Coin(qty, year, grade, type);
 }

@@ -12,6 +12,10 @@
 #include "Customer.cpp"
 #include "SearchTreeCustomers.cpp"
 #include "SearchTreeItems.cpp"
+#include "HashTable.h"
+#include "Coin.cpp"
+#include "ComicBook.cpp"
+#include "SportCard.cpp"
 
 
 using namespace std;
@@ -22,6 +26,8 @@ class Store
 private:
     SearchTreeCustomers bstCustomers;
     SearchTreeItems bstCoin, bstCB, bstSC;
+    HashTable HashMap;
+
 
 public:
     Store();  //constructor

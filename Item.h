@@ -43,6 +43,13 @@ public:
     // Postconditions: Determines if objs are equal reuturn true if so
     virtual bool operator==(const Item &rhs) const = 0;
 
+
+    ///--------------------------------- operator== ------------------------------------
+    // creates a new item and returns it.
+    // Preconditions: None
+    // Postconditions: Create and returns a new item
+    virtual Item* create(ifstream &infile) = 0;
+
     // ///--------------------------------- hash ------------------------------------
     // // Creates a unique integer value from data member variables
     // // Preconditions: None

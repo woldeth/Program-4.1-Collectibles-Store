@@ -11,16 +11,13 @@
 
 #include "Store.cpp"
 
-
-
-
 using namespace std;
 
 //-------------------------- main -------------------------------------------
 
 int main()
 {
-    // Create infile for the inventory 
+    // Create infile for the inventory
     ifstream infileInventory("hw4inventory.txt");
     if (!infileInventory)
     {
@@ -28,7 +25,7 @@ int main()
         return 1;
     }
 
-    // Create infile for the customers 
+    // Create infile for the customers
     ifstream infileCustomers("hw4customers.txt");
     if (!infileCustomers)
     {
@@ -36,14 +33,11 @@ int main()
         return 1;
     }
 
-    // Store st1;      // create the store object
+    Store st1; // create the store object
 
-    // st1.buildCustomerList(infileCustomers); // creates all customer object and stores in bst
+    st1.buildInventory(infileInventory); // creates all customer object and stores in bst
 
-
-
-
-
+    cout << "hello world" << endl;
 
     return 0;
 }

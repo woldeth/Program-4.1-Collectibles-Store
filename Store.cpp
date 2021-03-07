@@ -7,9 +7,23 @@
 
 #include "Store.h"
 #include <string>
+#include <vector>
 
 //constructor
-Store::Store() {}
+Store::Store()
+{
+    // Dummmy nodes for creations of inventory
+    HashNode *ptr1 = new HashNode('M', new Coin);
+    HashNode *ptr2 = new HashNode('C', new ComicBook);
+    HashNode *ptr3 = new HashNode('S', new SportCard);
+
+    vector<HashNode *> v;
+    v.push_back(ptr1);
+    v.push_back(ptr2);
+    v.push_back(ptr3);
+
+    HashMap.initHashTable(v);
+}
 
 //destructor
 Store::~Store() {}
@@ -44,4 +58,33 @@ void Store::buildCustomerList(ifstream &infile)
 // Postconditions: All inventory is read from infile and stored in the object
 void Store::buildInventory(ifstream &infile)
 {
+    while (infile.peek() != EOF)
+    {
+
+        string iT;
+    	getline(infile, iT , ',');
+	    infile.get(); 	
+
+        char inventoryType = iT[0];	
+        Item *dummyPtr = HashMap.get(inventoryType);
+
+        
+        if(dummyPtr == nullptr){
+            getline(infile, iT);
+            continue;
+        }
+
+        // for testing only on coins right now 
+        if(inventoryType != 'M'){
+            getline(infile, iT);
+            continue;
+        }
+    
+        Item *newItem = dummyPtr->create(infile);
+
+        
+
+
+
+    }
 }

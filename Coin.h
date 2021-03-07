@@ -44,4 +44,10 @@ public:
     // Preconditions: Two objects of the smae class
     // Postconditions: Determines if objs are equal reuturn true if so
     virtual bool operator==(const Item &rhs) const;
+
+
+    virtual Item* create(ifstream &infile); 
+
+
+  
 };
