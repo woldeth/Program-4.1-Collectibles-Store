@@ -16,10 +16,11 @@ class Item
 
 protected:
     char id;  // Coin (M), Comic (C) or Card (S)
-    int qty;  // amount of this item in inventory
     int year; // integer year
+    int qty;  // amount of this item in inventory
 
 public:
+    
     Item() : id('?'), qty(0), year(2021){}
     Item(char i, int q, int y) : id(i), qty(q), year(y){}
     virtual ~Item() {} // deconstructor

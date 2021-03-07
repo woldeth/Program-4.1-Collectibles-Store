@@ -37,5 +37,11 @@ void Store::buildCustomerList(ifstream &infile)
     }
 }
 
-
-
+///--------------------------------- BuildInventory ------------------------------------
+// Initalizes inventoryList
+// Preconditions: infile has been successfully opened and the file contains
+//                 properly formated data (according to the program specs)
+// Postconditions: All inventory is read from infile and stored in the object
+void Store::buildInventory(ifstream &infile)
+{
+}

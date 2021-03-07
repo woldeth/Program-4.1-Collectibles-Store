@@ -11,6 +11,8 @@
 #include <fstream>
 #include "Customer.cpp"
 #include "SearchTreeCustomers.cpp"
+#include "SearchTreeItems.cpp"
+
 
 using namespace std;
 
@@ -19,6 +21,7 @@ class Store
 
 private:
     SearchTreeCustomers bstCustomers;
+    SearchTreeItems bstCoin, bstCB, bstSC;
 
 public:
     Store();  //constructor
@@ -30,4 +33,11 @@ public:
     //                 properly formated data (according to the program specs)
     // Postconditions: All customers have been identifed and put into customerList
     void buildCustomerList(ifstream &infile);
+    
+    ///--------------------------------- BuildInventory ------------------------------------
+    // Initalizes inventoryList
+    // Preconditions: infile has been successfully opened and the file contains
+    //                 properly formated data (according to the program specs)
+    // Postconditions: All inventory is read from infile and stored in the object
+    void buildInventory(ifstream &infile);
 };
