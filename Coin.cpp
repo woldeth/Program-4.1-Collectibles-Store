@@ -7,25 +7,17 @@
 
 #include "Coin.h"
 
-// Constructor with parameters
-Coin::Coin(char i, int q, int y, int g, string t) : grade(g), type(t)
-{
-    id = i;
-    qty = q;
-    year = y;
-}
-
 ///--------------------------------- toString ------------------------------------
 // Prints the description of the item
 // Preconditions: None
 // Postconditions: Prints out the description for a coin
 void Coin::toString() const
 {
-    cout << "QTY: " << qty << " ID: " << id << " YEAR: " << year
-         << " GRADE: " << grade << " TYPE: " << type << endl;
+    cout << "QTY: " << qty << ", ID: " << id << ", YEAR: " << year
+         << ", GRADE: " << grade << ", TYPE: " << type << endl;
 }
 
-//Coins are sorted first by type, then by year, then by grade
+
 ///--------------------------------- operator< ------------------------------------
 // Defines lesser than operator for coin
 // Preconditions: Two objects of the same subclass
@@ -45,6 +37,9 @@ bool Coin::operator<(const Item &rhs) const
     else if ((type == rhsS.type) && (year == rhsS.year) && (grade < rhsS.grade))
     {
         return true;
+    }else if ((type == rhsS.type) && (year == rhsS.year) && (grade == rhsS.grade)){
+        cout << "we are the same coin" << endl;
+        return false;
     }
 
     return false;

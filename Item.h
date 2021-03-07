@@ -20,6 +20,8 @@ protected:
     int year; // integer year
 
 public:
+    Item() : id('?'), qty(0), year(2021){}
+    Item(char i, int q, int y) : id(i), qty(q), year(y){}
     virtual ~Item() {} // deconstructor
 
     ///--------------------------------- toString ------------------------------------

@@ -8,7 +8,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Item.cpp"
+#include "Item.h"
 
 using namespace std;
 
@@ -16,14 +16,14 @@ using namespace std;
 class Coin : public Item
 {
 protected:
-    int grade; // Grade of Coin
+    int grade;
     string type;
 
 public:
-    Coin() : grade(-1) {} // Constructor if nothing passed in
+    Coin() : Item('M', 0, 2021), grade(-1), type("?") {} // Constructor if nothing passed in
 
     // Constructor with parameters
-    Coin(char i, int q, int y, int g, string t);
+    Coin(int q, int y, int g, string t) : Item('M', q, y), grade(g), type(t) {}
 
     virtual ~Coin() {} // Destructor
 
@@ -32,7 +32,7 @@ public:
     // Preconditions: None
     // Postconditions: Prints out the description for a coin
     virtual void toString() const;
-    
+
     ///--------------------------------- operator< ------------------------------------
     // Defines lesser than operator for coin
     // Preconditions: Two objects of the same subclass

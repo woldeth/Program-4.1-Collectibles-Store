@@ -10,8 +10,7 @@
 #include <string>
 
 #include "Store.cpp"
-#include "Item.h"
-#include "Coin.cpp"
+
 
 
 
@@ -40,15 +39,6 @@ int main()
     // Store st1;      // create the store object
 
     // st1.buildCustomerList(infileCustomers); // creates all customer object and stores in bst
-
-    Item *ptr; 
-    Item *ptr1; 
-
-
-    //coin(char i, int q, int y, int g, string t)
-
-    ptr = new Coin('M', 1, 1996, 100, "Tomas coin");
-    ptr1 = new Coin('M', 1, 1997, 101, "abc");
 
 
 
