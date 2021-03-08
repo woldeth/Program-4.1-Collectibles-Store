@@ -24,9 +24,9 @@ Store::Store()
 
     HashMap.initHashTable(v);
 
-    // delete ptr1;
-    // delete ptr2;
-    // delete ptr3;
+    delete ptr1;
+    delete ptr2;
+    delete ptr3;
     ptr1 = nullptr;
     ptr2 = nullptr;
     ptr3 = nullptr;
@@ -92,7 +92,6 @@ void Store::buildInventory(ifstream &infile)
         }
     
         Item *newItem = dummyPtr->create(infile);
-        dummyPtr = delete;
         dummyPtr = nullptr;
 
         inventoryTrees[(newItem->id - 'A')].insert(newItem);
