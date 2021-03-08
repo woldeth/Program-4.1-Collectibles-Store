@@ -23,14 +23,20 @@ Store::Store()
     v.push_back(ptr3);
 
     HashMap.initHashTable(v);
+
+    delete ptr1;
+    delete ptr2;
+    delete ptr3;
+    ptr1 = nullptr;
+    ptr2 = nullptr;
+    ptr3 = nullptr;
 }
 
 //destructor
 Store::~Store() {
 
     for(int i = 0; i < ALPHA; i++){
-        inventoryTrees[i].~SearchTreeItems();
-            
+        inventoryTrees[i].~SearchTreeItems();     
     }
 
 }
@@ -53,7 +59,6 @@ void Store::buildCustomerList(ifstream &infile)
         string name = idAndName.substr(idAndName.find(",") + 2);
 
         Customer *newPtr = new Customer(id, name);
-
         bstCustomers.insert(newPtr);
     }
 }
@@ -89,6 +94,9 @@ void Store::buildInventory(ifstream &infile)
         Item *newItem = dummyPtr->create(infile);
 
         inventoryTrees[(newItem->id - 'A')].insert(newItem);
+        
+        delete dummyPtr;
+        dummyPtr = nullptr;
 
 
     }
