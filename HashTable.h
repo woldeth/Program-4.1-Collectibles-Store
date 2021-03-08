@@ -58,7 +58,6 @@ public:
 
 private:
     int size;
-   // vector<HashNode*> v;
     vector<HashNode*> hashT;
     
 

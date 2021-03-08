@@ -26,7 +26,14 @@ Store::Store()
 }
 
 //destructor
-Store::~Store() {}
+Store::~Store() {
+
+    for(int i = 0; i < ALPHA; i++){
+        inventoryTrees[i].~SearchTreeItems();
+            
+    }
+
+}
 
 ///--------------------------------- BuildCustomerList ------------------------------------
 // Initalizes customerList
