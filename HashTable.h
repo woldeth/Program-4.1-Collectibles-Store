@@ -20,6 +20,15 @@ class HashTable
 public:
     HashTable(){}
 
+    ~HashTable(){
+        for(int i = 0; i < hashT.size(); i++){
+            if (hashT[i] != nullptr){
+                delete hashT[i];
+                hashT[i] = nullptr;
+            }
+        }
+    }
+
     void initHashTable(vector<HashNode*> v) {
 
         size = v.size();
@@ -49,7 +58,7 @@ public:
 
 private:
     int size;
-    vector<HashNode*> v;
+   // vector<HashNode*> v;
     vector<HashNode*> hashT;
     
 
