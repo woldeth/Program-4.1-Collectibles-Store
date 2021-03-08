@@ -36,6 +36,7 @@ int main()
     Store st1; // create the store object
 
     st1.buildInventory(infileInventory); // creates all customer object and stores in bst
+    st1.buildCustomerList(infileCustomers);
 
     cout << "hello world" << endl;
 

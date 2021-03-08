@@ -15,17 +15,17 @@ bool Customer::operator<(const Customer &rhs) const
 {
     if (name < rhs.name)
     {
-        cout << name << " < " << rhs.name << ": " << (name < rhs.name) << endl;
+        //cout << name << " < " << rhs.name << ": " << (name < rhs.name) << endl;
         return true;
     }
 
     if (name > rhs.name)
     {
-        cout << name << " > " << rhs.name << ": " << (name > rhs.name) << endl;
+        //cout << name << " > " << rhs.name << ": " << (name > rhs.name) << endl;
         return false;
     }
 
-    cout << "They are the same customer" << endl;
+    //cout << "They are the same customer" << endl;
     return false;
 }
 
