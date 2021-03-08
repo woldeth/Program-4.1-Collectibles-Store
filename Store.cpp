@@ -92,6 +92,7 @@ void Store::buildInventory(ifstream &infile)
         }
     
         Item *newItem = dummyPtr->create(infile);
+        dummyPtr = delete;
         dummyPtr = nullptr;
 
         inventoryTrees[(newItem->id - 'A')].insert(newItem);
