@@ -5,6 +5,7 @@
         "typeinfo": "cpp",
         "vector": "cpp",
         "istream": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "new": "cpp"
     }
 }

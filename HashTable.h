@@ -23,6 +23,9 @@ public:
     ~HashTable(){
         for(int i = 0; i < hashT.size(); i++){
             if (hashT[i] != nullptr){
+                delete hashT[i]->i;
+                hashT[i]->i = nullptr;
+
                 delete hashT[i];
                 hashT[i] = nullptr;
             }
