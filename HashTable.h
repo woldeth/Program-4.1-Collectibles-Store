@@ -22,6 +22,7 @@ public:
 
     ~HashTable(){
         for(int i = 0; i < hashT.size(); i++){
+
             if (hashT[i] != nullptr){
                 delete hashT[i]->i;
                 hashT[i]->i = nullptr;
@@ -34,8 +35,8 @@ public:
 
     void initHashTable(vector<HashNode*> v) {
 
-        size = v.size();
-        hashT.resize(9);
+       
+        hashT.resize(SIZE);
 
         for (int i = 0; i < v.size(); i++) {
             int index = hashFunction(v[i]->id);
@@ -60,7 +61,6 @@ public:
     }
 
 private:
-    int size;
     vector<HashNode*> hashT;
     
 
