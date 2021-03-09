@@ -18,8 +18,8 @@ class Sell : public Transaction
 {
 
 public:
-    Sell() : Transaction() {}
-    Sell(char c, int cust) : Transaction(c , cust) {}
+    Sell() : Transaction('S', -1) {}
+    Sell(int cust) : Transaction('S' , cust) {}
     virtual ~Sell() {} 
     virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]){}
 };

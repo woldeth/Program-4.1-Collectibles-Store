@@ -18,8 +18,8 @@ class Buy : public Transaction
 {
 
 public:
-    Buy() : Transaction() {}
-    Buy(char c, int cust) : Transaction(c , cust) {}
+    Buy() : Transaction('B', -1) {}
+    Buy(int cust) : Transaction('B', cust) {}
     virtual ~Buy() {} 
     virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]){}
 };

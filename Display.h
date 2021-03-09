@@ -18,8 +18,8 @@ class Display : public Transaction
 {
 
 public:
-    Display() : Transaction() {}
-    Display(char c, int cust) : Transaction(c , cust) {}
+    Display() : Transaction('D', -1) {}
+    Display(int cust) : Transaction('D', cust) {}
     virtual ~Display() {} 
     virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]){}
 };
