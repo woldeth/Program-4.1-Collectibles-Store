@@ -46,7 +46,7 @@ Store::Store()
     v1.push_back(ptr7);
     v1.push_back(ptr8);
 
-    //HashMap.initHashTransaction(v1);
+    HashMap.initHashTransaction(v1);
 
     delete ptr4;
     delete ptr5;
@@ -109,6 +109,7 @@ void Store::buildInventory(ifstream &infile)
 
         char inventoryType = iT[0];
         Item *dummyPtr = HashMap.get(inventoryType);
+       
 
         if (dummyPtr == nullptr)
         {
@@ -142,15 +143,19 @@ void Store::processActions(ifstream &infile)
         getline(infile, command, '\n');
 
         char commandV = command[0];
-        //Transaction *dummyPtr = HashMap.getTrans(commandV);
+        
+        Transaction *dummyPtr = HashMap.getTrans(commandV);
 
-        // if (dummyPtr == nullptr)
-        // {
-        //     getline(infile, iT);
-        //     continue;
-        // }
+        
 
-        cout << commandV << endl;
+        if (dummyPtr == nullptr)
+        {
+            continue;
+        }
+
+        //This is where i stopped, need to pass everything into excute and
+        //perform everything that is nesscary to complete the actions 
+        //Transaction *newTransaction = dummyPtr->excute(); 
 
         
         
