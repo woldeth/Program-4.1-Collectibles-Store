@@ -35,7 +35,6 @@ public:
 
     void initHashTable(vector<HashNode*> v) {
 
-       
         hashT.resize(SIZE);
 
         for (int i = 0; i < v.size(); i++) {

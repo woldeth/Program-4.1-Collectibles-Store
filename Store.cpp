@@ -101,3 +101,9 @@ void Store::buildInventory(ifstream &infile)
 
     }
 }
+
+
+void Store::processActions(ifstream &infile) {
+
+    cout << "processAction" << endl;
+}

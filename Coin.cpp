@@ -84,7 +84,7 @@ Item *Coin::create(ifstream &infile)
 
     getline(infile, type, '\n'); //get type
 
-    cout << qty << " " << year << " " << grade << " " << type << endl;
+    //cout << qty << " " << year << " " << grade << " " << type << endl;
 
     return new Coin(qty, year, grade, type);
 }

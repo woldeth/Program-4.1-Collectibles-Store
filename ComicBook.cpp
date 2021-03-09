@@ -90,7 +90,7 @@ Item *ComicBook::create(ifstream &infile)
 
     getline(infile, publisher, '\n'); //get Grade
 
-    cout << qty << " " << year << " " << grade << " " << type << " " << publisher << endl;
+    //cout << qty << " " << year << " " << grade << " " << type << " " << publisher << endl;
   
 
     return new ComicBook(qty, year, grade, type, publisher);

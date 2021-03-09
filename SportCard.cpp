@@ -90,7 +90,7 @@ Item* SportCard::create(ifstream &infile){
 
     getline(infile, manufacturer, '\n'); //get Grade
 
-    cout << qty << " " << year << " " << grade << " " << player << " " << manufacturer << endl;
+    //cout << qty << " " << year << " " << grade << " " << player << " " << manufacturer << endl;
   
 
     return new SportCard(qty, year, grade, player, manufacturer);

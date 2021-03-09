@@ -33,12 +33,23 @@ int main()
         return 1;
     }
 
+    ifstream infileCommands("hw4commands.txt");
+    if (!infileCommands)
+    {
+        cerr << "File could not be opened." << endl;
+        return 1;
+    }
+
     Store st1; // create the store object
 
     st1.buildInventory(infileInventory); // creates all customer object and stores in bst
     st1.buildCustomerList(infileCustomers);
 
-    //cout << "hello world" << endl;
+    st1.processActions(infileCommands);
+
+
+
+ 
 
     return 0;
 }

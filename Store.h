@@ -47,4 +47,7 @@ public:
     //                 properly formated data (according to the program specs)
     // Postconditions: All inventory is read from infile and stored in the object
     void buildInventory(ifstream &infile);
+
+
+    void processActions(ifstream &infile);
 };
