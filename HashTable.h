@@ -42,6 +42,19 @@ public:
                 hashT[i] = nullptr;
             }
         }
+
+        for (int i = 0; i < hashTrans.size(); i++)
+        {
+
+            if (hashTrans[i] != nullptr)
+            {
+                delete hashTrans[i]->trans;
+                hashTrans[i]->trans = nullptr;
+
+                delete hashTrans[i];
+                hashTrans[i] = nullptr;
+            }
+        }
     }
 
     void initHashTable(vector<HashNode *> v)
