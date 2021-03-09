@@ -53,7 +53,7 @@ public:
     Item* get(char key) {
         int index = hashFunction(key);
 
-        if(hashT[index] != nullptr){
+        if(hashT[index] != nullptr &&  hashT[index]->id == key){
             return hashT[index]->i;
         }
 
@@ -63,5 +63,4 @@ public:
 private:
     vector<HashNode*> hashT;
     
-
 };

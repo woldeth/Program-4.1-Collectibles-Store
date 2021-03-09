@@ -85,11 +85,11 @@ void Store::buildInventory(ifstream &infile)
             continue;
         }
 
-        // for testing only on coins right now 
-        if(inventoryType != 'M'){
-            getline(infile, iT);
-            continue;
-        }
+        // // for testing only on coins right now 
+        // if(inventoryType != 'S'){
+        //     getline(infile, iT);
+        //     continue;
+        // }
     
         Item *newItem = dummyPtr->create(infile);
 

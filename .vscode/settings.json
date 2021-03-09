@@ -6,6 +6,7 @@
         "vector": "cpp",
         "istream": "cpp",
         "chrono": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "iostream": "cpp"
     }
 }

@@ -7,6 +7,8 @@
 
 #include "Coin.h"
 
+
+
 ///--------------------------------- toString ------------------------------------
 // Prints the description of the item
 // Preconditions: None
@@ -68,20 +70,21 @@ Item *Coin::create(ifstream &infile)
     string stringYear;
     string stringGrade;
 
-    getline(infile, stringQTY, ','); //get count
+    getline(infile, stringQTY, ','); //get QTY
     qty = atoi(stringQTY.c_str());
     infile.get();                       //discard space
 
-    getline(infile, stringYear, ','); //get count
+    getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
     infile.get();                       //discard space
 
-    getline(infile, stringGrade, ','); //get count
+    getline(infile, stringGrade, ','); //get Grade
     grade = atoi(stringGrade.c_str());
     infile.get();                       //discard space
 
-    getline(infile, type, '\n'); //get count
+    getline(infile, type, '\n'); //get type
 
+    cout << qty << " " << year << " " << grade << " " << type << endl;
 
     return new Coin(qty, year, grade, type);
 }

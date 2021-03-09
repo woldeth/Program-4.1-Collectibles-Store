@@ -62,3 +62,36 @@ bool ComicBook::operator==(const Item &rhs) const
 
     return ((publisher == rhsS.publisher) && (title < rhsS.title) && (year == rhsS.year) && (grade == rhsS.grade));
 }
+
+Item *ComicBook::create(ifstream &infile)
+{
+    int qty;
+    int year;
+    string grade;
+    string type;
+    string publisher;
+
+    string stringQTY;
+    string stringYear;
+
+    getline(infile, stringQTY, ','); //get QTY
+    qty = atoi(stringQTY.c_str());
+    infile.get(); //discard space
+
+    getline(infile, stringYear, ','); //get Year
+    year = atoi(stringYear.c_str());
+    infile.get(); //discard space
+
+    getline(infile, grade, ','); //get Grade
+    infile.get();                //discard space
+
+    getline(infile, type, ','); //get type
+    infile.get();
+
+    getline(infile, publisher, '\n'); //get Grade
+
+    cout << qty << " " << year << " " << grade << " " << type << " " << publisher << endl;
+  
+
+    return new ComicBook(qty, year, grade, type, publisher);
+}

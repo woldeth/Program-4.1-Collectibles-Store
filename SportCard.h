@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
 // Date: March 6th, 2021
-// File Name: ComicBook.h
+// File Name: SportCard.h
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
 
@@ -47,7 +47,5 @@ public:
     virtual bool operator==(const Item &rhs) const;
 
 
-    virtual Item* create(ifstream &infile){
-        return new SportCard;
-    }
+    virtual Item* create(ifstream &infile);
 };

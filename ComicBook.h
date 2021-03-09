@@ -47,7 +47,5 @@ public:
     virtual bool operator==(const Item &rhs) const;
 
 
-    virtual Item* create(ifstream &infile){
-        return new ComicBook;
-    }
+    virtual Item* create(ifstream &infile);
 };

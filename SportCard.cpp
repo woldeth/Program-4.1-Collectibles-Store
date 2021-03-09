@@ -62,3 +62,36 @@ bool SportCard::operator==(const Item &rhs) const
 
     return (player == rhsS.player) && (year == rhsS.year) && (manufacturer == rhsS.manufacturer) && (grade == rhsS.grade);
 }
+
+
+Item* SportCard::create(ifstream &infile){
+    int qty;
+    int year;
+    string grade;
+    string  player;
+    string manufacturer;
+
+    string stringQTY;
+    string stringYear;
+
+    getline(infile, stringQTY, ','); //get QTY
+    qty = atoi(stringQTY.c_str());
+    infile.get(); //discard space
+
+    getline(infile, stringYear, ','); //get Year
+    year = atoi(stringYear.c_str());
+    infile.get(); //discard space
+
+    getline(infile, grade, ','); //get Grade
+    infile.get();                //discard space
+
+    getline(infile, player, ','); //get type
+    infile.get();
+
+    getline(infile, manufacturer, '\n'); //get Grade
+
+    cout << qty << " " << year << " " << grade << " " << player << " " << manufacturer << endl;
+  
+
+    return new SportCard(qty, year, grade, player, manufacturer);
+}
