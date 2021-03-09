@@ -157,6 +157,8 @@ void Store::processActions(ifstream &infile)
         //perform everything that is nesscary to complete the actions 
         //Transaction *newTransaction = dummyPtr->excute(); 
 
+        dummyPtr = nullptr;
+
         
         
     }
