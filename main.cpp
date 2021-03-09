@@ -44,12 +44,7 @@ int main()
 
     st1.buildInventory(infileInventory); // creates all customer object and stores in bst
     st1.buildCustomerList(infileCustomers);
-
     st1.processActions(infileCommands);
-
-
-
- 
 
     return 0;
 }

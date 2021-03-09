@@ -16,19 +16,28 @@
 #include "Coin.cpp"
 #include "ComicBook.cpp"
 #include "SportCard.cpp"
+#include "Transaction.h"
+#include "Buy.h"
+#include "Sell.h"
+#include "Display.h"
+#include "CustomerTrans.h"
+#include "History.h"
 
-const int ALPHA = 26;  //number of letters
+const int ALPHA = 26; //number of letters
 
 using namespace std;
+
+// Nodes to keep track of all transations
+
 
 class Store
 {
 
 private:
     SearchTreeCustomers bstCustomers;
-    SearchTreeItems inventoryTrees [ALPHA];
+    SearchTreeItems inventoryTrees[ALPHA];
+    customerNode custTransactionList[1000]; // max of 1000 customers, 3 digit id = index
     HashTable HashMap;
-
 
 public:
     Store();  //constructor
@@ -40,14 +49,13 @@ public:
     //                 properly formated data (according to the program specs)
     // Postconditions: All customers have been identifed and put into customerList
     void buildCustomerList(ifstream &infile);
-    
+
     ///--------------------------------- BuildInventory ------------------------------------
     // Initalizes inventoryList
     // Preconditions: infile has been successfully opened and the file contains
     //                 properly formated data (according to the program specs)
     // Postconditions: All inventory is read from infile and stored in the object
     void buildInventory(ifstream &infile);
-
 
     void processActions(ifstream &infile);
 };

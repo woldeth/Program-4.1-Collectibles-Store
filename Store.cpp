@@ -30,15 +30,45 @@ Store::Store()
     ptr1 = nullptr;
     ptr2 = nullptr;
     ptr3 = nullptr;
+
+
+     HashNodeTrans *ptr4 = new HashNodeTrans('B', new Buy);
+     HashNodeTrans *ptr5 = new HashNodeTrans('S', new Sell);
+     HashNodeTrans *ptr6 = new HashNodeTrans('D', new Display);
+     HashNodeTrans *ptr7 = new HashNodeTrans('C', new CustomerTrans);
+     HashNodeTrans *ptr8 = new HashNodeTrans('H', new History);
+
+
+    vector<HashNodeTrans*> v1;
+    v1.push_back(ptr4);
+    v1.push_back(ptr5);
+    v1.push_back(ptr6);
+    v1.push_back(ptr7);
+    v1.push_back(ptr8);
+
+    //HashMap.initHashTransaction(v1);
+
+    delete ptr4;
+    delete ptr5;
+    delete ptr6;
+    delete ptr7;
+    delete ptr8;
+    ptr4 = nullptr;
+    ptr5 = nullptr;
+    ptr6 = nullptr;
+    ptr7 = nullptr;
+    ptr8 = nullptr;
+
 }
 
 //destructor
-Store::~Store() {
+Store::~Store()
+{
 
-    for(int i = 0; i < ALPHA; i++){
-        inventoryTrees[i].~SearchTreeItems();     
+    for (int i = 0; i < ALPHA; i++)
+    {
+        inventoryTrees[i].~SearchTreeItems();
     }
-
 }
 
 ///--------------------------------- BuildCustomerList ------------------------------------
@@ -74,36 +104,59 @@ void Store::buildInventory(ifstream &infile)
     {
 
         string iT;
-    	getline(infile, iT , ',');
-	    infile.get(); 	
+        getline(infile, iT, ',');
+        infile.get();
 
-        char inventoryType = iT[0];	
+        char inventoryType = iT[0];
         Item *dummyPtr = HashMap.get(inventoryType);
-        
-        if(dummyPtr == nullptr){
+
+        if (dummyPtr == nullptr)
+        {
             getline(infile, iT);
             continue;
         }
 
-        // // for testing only on coins right now 
+        // // for testing only on coins right now
         // if(inventoryType != 'S'){
         //     getline(infile, iT);
         //     continue;
         // }
-    
+
         Item *newItem = dummyPtr->create(infile);
 
         dummyPtr = nullptr;
 
         inventoryTrees[(newItem->id - 'A')].insert(newItem);
-        
-
-
     }
 }
 
-
-void Store::processActions(ifstream &infile) {
+void Store::processActions(ifstream &infile)
+{
 
     cout << "processAction" << endl;
+
+    while (infile.peek() != EOF)
+    {
+
+        string command;
+        getline(infile, command, '\n');
+
+        char commandV = command[0];
+        // Item *dummyPtr = HashMap.get(commandV);
+
+        // if (dummyPtr == nullptr)
+        // {
+        //     getline(infile, iT);
+        //     continue;
+        // }
+
+        cout << commandV << endl;
+
+
+        
+            
+    
+        
+        
+    }
 }
