@@ -18,7 +18,8 @@ class History : public Transaction
 {
 
 public:
-
+    History() : Transaction() {}
+    History(char c, int cust) : Transaction(c , cust) {}
     virtual ~History() {} 
     virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]){}
 };

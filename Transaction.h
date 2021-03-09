@@ -39,6 +39,8 @@ public:
     char command;
     int customer;
 
+    Transaction() : command('?'), customer(-1) {}
+    Transaction(char c, int cust) : command(c), customer(cust) {}
     virtual ~Transaction() {} // deconstructor
 
     ///--------------------------------- operator== ------------------------------------

@@ -4,7 +4,6 @@
 #include "Item.h"
 #include "Transaction.h"
 
-
 const int SIZE = 9;
 
 struct HashNode
@@ -23,18 +22,19 @@ struct HashNodeTrans
     Transaction *trans;
 };
 
-
-
 class HashTable
 {
 
 public:
-    HashTable(){}
+    HashTable() {}
 
-    ~HashTable(){
-        for(int i = 0; i < hashT.size(); i++){
+    ~HashTable()
+    {
+        for (int i = 0; i < hashT.size(); i++)
+        {
 
-            if (hashT[i] != nullptr){
+            if (hashT[i] != nullptr)
+            {
                 delete hashT[i]->i;
                 hashT[i]->i = nullptr;
 
@@ -44,27 +44,30 @@ public:
         }
     }
 
-    void initHashTable(vector<HashNode*> v) {
+    void initHashTable(vector<HashNode *> v)
+    {
 
         hashT.resize(SIZE);
 
-        for (int i = 0; i < v.size(); i++) {
+        for (int i = 0; i < v.size(); i++)
+        {
             int index = hashFunction(v[i]->id);
             hashT[index] = new HashNode(v[i]->id, v[i]->i);
         }
     }
 
-    void initHashTransaction(vector<HashNodeTrans*> v) {
+    void initHashTransaction(vector<HashNodeTrans *> v)
+    {
 
         hashTrans.resize(26);
 
-        for (int i = 0; i < v.size(); i++) {
+        for (int i = 0; i < v.size(); i++)
+        {
             int index = hashFunctionTrans(v[i]->command);
             hashTrans[index] = new HashNodeTrans(v[i]->command, v[i]->trans);
         }
     }
-    
-    
+
     int hashFunction(char c)
     {
         int hash = c % SIZE;
@@ -77,18 +80,31 @@ public:
         return hash;
     }
 
-    Item* get(char key) {
+    Item *get(char key)
+    {
         int index = hashFunction(key);
 
-        if(hashT[index] != nullptr &&  hashT[index]->id == key){
+        if (hashT[index] != nullptr && hashT[index]->id == key)
+        {
             return hashT[index]->i;
         }
 
         return nullptr;
     }
 
+    Transaction *getTrans(char key)
+    {
+        int index = hashFunctionTrans(key);
+
+        if (hashTrans[index] != nullptr && hashTrans[index]->command == key)
+        {
+            return hashTrans[index]->trans;
+        }
+
+        return nullptr;
+    }
+
 private:
-    vector<HashNode*> hashT;
-    vector<HashNodeTrans*> hashTrans;
-    
+    vector<HashNode *> hashT;
+    vector<HashNodeTrans *> hashTrans;
 };

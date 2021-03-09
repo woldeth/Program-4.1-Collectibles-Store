@@ -142,7 +142,7 @@ void Store::processActions(ifstream &infile)
         getline(infile, command, '\n');
 
         char commandV = command[0];
-        // Item *dummyPtr = HashMap.get(commandV);
+        //Transaction *dummyPtr = HashMap.getTrans(commandV);
 
         // if (dummyPtr == nullptr)
         // {
@@ -152,10 +152,6 @@ void Store::processActions(ifstream &infile)
 
         cout << commandV << endl;
 
-
-        
-            
-    
         
         
     }
