@@ -68,6 +68,7 @@ Store::~Store()
 
     for (int i = 0; i < 1000; i++)
     {
+    
         if(custTransactionList[i].head == nullptr){
             continue;
         }
@@ -77,9 +78,10 @@ Store::~Store()
         while(cur != nullptr ){
             transactionNode *temp = cur;
             cur = cur->next;
+            delete temp->item;
+            temp->item = nullptr;
             delete temp;
             temp = nullptr;
-
         }
     }
  
