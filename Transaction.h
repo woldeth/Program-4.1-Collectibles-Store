@@ -10,7 +10,9 @@
 #include <string>
 #include "SearchTreeItems.h"
 #include "SearchTreeCustomers.h"
-#include "Store.h"
+//#include "HashTable.h"
+class HashTable;
+
 
 using namespace std;
 
@@ -47,5 +49,5 @@ public:
     // creates a new item and returns it.
     // Preconditions: None
     // Postconditions: Create and returns a new item
-    virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]) = 0;
+    virtual void excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H) = 0;
 };

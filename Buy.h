@@ -13,13 +13,13 @@
 
 using namespace std;
 
-
 class Buy : public Transaction
 {
 
 public:
     Buy() : Transaction('B', -1) {}
     Buy(int cust) : Transaction('B', cust) {}
-    virtual ~Buy() {} 
-    virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]){}
+    virtual ~Buy() {}
+    virtual void excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H);
+    
 };

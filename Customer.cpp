@@ -22,7 +22,7 @@ bool Customer::operator<(const Customer &rhs) const
     if (name > rhs.name)
     {
         //cout << name << " > " << rhs.name << ": " << (name > rhs.name) << endl;
-        return false;
+        return false;   
     }
 
     //cout << "They are the same customer" << endl;

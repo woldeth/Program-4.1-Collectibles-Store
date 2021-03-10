@@ -1,8 +1,11 @@
 
+#pragma once
 #include <vector>
 #include <iostream>
 #include "Item.h"
 #include "Transaction.h"
+
+ //class Transaction;
 
 const int SIZE = 9;
 
@@ -118,6 +121,6 @@ public:
     }
 
 private:
-    vector<HashNode *> hashT;
-    vector<HashNodeTrans *> hashTrans;
+    vector<HashNode *> hashT; // c M s
+    vector<HashNodeTrans *> hashTrans; // s b c d h
 };

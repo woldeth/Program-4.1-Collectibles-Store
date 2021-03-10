@@ -17,7 +17,7 @@
 #include "ComicBook.cpp"
 #include "SportCard.cpp"
 #include "Transaction.h"
-#include "Buy.h"
+#include "Buy.cpp"
 #include "Sell.h"
 #include "Display.h"
 #include "CustomerTrans.h"

@@ -90,6 +90,8 @@ void Store::buildCustomerList(ifstream &infile)
 
         Customer *newPtr = new Customer(id, name);
         bstCustomers.insert(newPtr);
+
+        // update the transaction node here 
     }
 }
 
@@ -140,23 +142,28 @@ void Store::processActions(ifstream &infile)
     {
 
         string command;
-        getline(infile, command, '\n');
+
+        if(infile.peek() != 'D'){
+            getline(infile, command, ',');
+            infile.get();
+        } else{
+            getline(infile, command);
+        }
 
         char commandV = command[0];
+       
         
-        Transaction *dummyPtr = HashMap.getTrans(commandV);
+       Transaction *dummyPtr = HashMap.getTrans(commandV);
 
-        
 
         if (dummyPtr == nullptr)
         {
             continue;
         }
 
-        //This is where i stopped, need to pass everything into excute and
-        //perform everything that is nesscary to complete the actions 
-        //Transaction *newTransaction = dummyPtr->excute(); 
+       dummyPtr->excute(infile,inventoryTrees, bstCustomers,custTransactionList, HashMap); 
 
+       getline(infile, command);
         dummyPtr = nullptr;
 
         

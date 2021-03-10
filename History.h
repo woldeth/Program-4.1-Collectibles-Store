@@ -21,5 +21,5 @@ public:
     History() : Transaction('H', -1) {}
     History(int cust) : Transaction('H' , cust) {}
     virtual ~History() {} 
-    virtual void excute(string s, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[]){}
+    virtual void excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H){}
 };

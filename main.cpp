@@ -46,5 +46,7 @@ int main()
     st1.buildCustomerList(infileCustomers);
     st1.processActions(infileCommands);
 
+    cout << endl;
+
     return 0;
 }
