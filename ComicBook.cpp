@@ -13,7 +13,7 @@
 // Postconditions: Prints out the description for a coin
 void ComicBook::toString() const
 {
-    cout << "QTY: " << qty << ", ID: " << id << ", YEAR: " << year
+    cout <<", ID: " << id << ", YEAR: " << year
          << ", GRADE: " << grade << ", Title: " << title
          << ", PUBLISHER: " << publisher << endl;
 }
@@ -65,18 +65,18 @@ bool ComicBook::operator==(const Item &rhs) const
 
 Item *ComicBook::create(ifstream &infile)
 {
-    int qty;
+    //int qty;
     int year;
     string grade;
     string type;
     string publisher;
 
-    string stringQTY;
-    string stringYear;
+    // string stringQTY;
+     string stringYear;
 
-    getline(infile, stringQTY, ','); //get QTY
-    qty = atoi(stringQTY.c_str());
-    infile.get(); //discard space
+    // getline(infile, stringQTY, ','); //get QTY
+    // qty = atoi(stringQTY.c_str());
+    // infile.get(); //discard space
 
     getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
@@ -93,5 +93,5 @@ Item *ComicBook::create(ifstream &infile)
     //cout << qty << " " << year << " " << grade << " " << type << " " << publisher << endl;
   
 
-    return new ComicBook(qty, year, grade, type, publisher);
+    return new ComicBook(year, grade, type, publisher);
 }

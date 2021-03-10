@@ -15,7 +15,7 @@
 // Postconditions: Prints out the description for a coin
 void Coin::toString() const
 {
-    cout << "QTY: " << qty << ", ID: " << id << ", YEAR: " << year
+    cout << "ID: " << id << ", YEAR: " << year
          << ", GRADE: " << grade << ", TYPE: " << type << endl;
 }
 
@@ -61,18 +61,19 @@ bool Coin::operator==(const Item &rhs) const
 
 Item *Coin::create(ifstream &infile)
 {
-    int qty;
+    
     int year;
     int grade;
     string type; 
-
-    string stringQTY;
+    
     string stringYear;
     string stringGrade;
 
-    getline(infile, stringQTY, ','); //get QTY
-    qty = atoi(stringQTY.c_str());
-    infile.get();                       //discard space
+    //int qty;
+    //string stringQTY;
+    // getline(infile, stringQTY, ','); //get QTY
+    // qty = atoi(stringQTY.c_str());
+    // infile.get();                       //discard space
 
     getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
@@ -86,5 +87,5 @@ Item *Coin::create(ifstream &infile)
 
     //cout << qty << " " << year << " " << grade << " " << type << endl;
 
-    return new Coin(qty, year, grade, type);
+    return new Coin(year, grade, type);
 }

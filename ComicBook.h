@@ -21,10 +21,10 @@ protected:
     string publisher; 
 
 public:
-    ComicBook() : Item('C', 0, 2021), grade("?"), title("?"), publisher("?") {} // Constructor if nothing passed in
+    ComicBook() : Item('C', 2021), grade("?"), title("?"), publisher("?") {} // Constructor if nothing passed in
 
     // Constructor with parameters
-    ComicBook(int q, int y, string g, string t, string p) : Item('C', q, y), grade(g), title(t), publisher(p) {}
+    ComicBook(int y, string g, string t, string p) : Item('C', y), grade(g), title(t), publisher(p) {}
 
     virtual ~ComicBook() {} // Destructor
 

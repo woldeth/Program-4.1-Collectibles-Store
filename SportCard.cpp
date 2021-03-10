@@ -13,7 +13,7 @@
 // Postconditions: Prints out the description for a coin
 void SportCard::toString() const
 {
-    cout << "QTY: " << qty << ", ID: " << id << ", YEAR: " << year
+    cout << ", ID: " << id << ", YEAR: " << year
          << ", GRADE: " << grade << ", Player: " << player
          << ", Manufacturer: " << manufacturer << endl;
 }
@@ -65,18 +65,18 @@ bool SportCard::operator==(const Item &rhs) const
 
 
 Item* SportCard::create(ifstream &infile){
-    int qty;
+    //int qty;
     int year;
     string grade;
     string  player;
     string manufacturer;
 
-    string stringQTY;
+    //string stringQTY;
     string stringYear;
 
-    getline(infile, stringQTY, ','); //get QTY
-    qty = atoi(stringQTY.c_str());
-    infile.get(); //discard space
+    // getline(infile, stringQTY, ','); //get QTY
+    // qty = atoi(stringQTY.c_str());
+    // infile.get(); //discard space
 
     getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
@@ -93,5 +93,5 @@ Item* SportCard::create(ifstream &infile){
     //cout << qty << " " << year << " " << grade << " " << player << " " << manufacturer << endl;
   
 
-    return new SportCard(qty, year, grade, player, manufacturer);
+    return new SportCard(year, grade, player, manufacturer);
 }

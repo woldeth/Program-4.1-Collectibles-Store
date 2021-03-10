@@ -31,15 +31,13 @@ Store::Store()
     ptr2 = nullptr;
     ptr3 = nullptr;
 
+    HashNodeTrans *ptr4 = new HashNodeTrans('B', new Buy);
+    HashNodeTrans *ptr5 = new HashNodeTrans('S', new Sell);
+    HashNodeTrans *ptr6 = new HashNodeTrans('D', new Display);
+    HashNodeTrans *ptr7 = new HashNodeTrans('C', new CustomerTrans);
+    HashNodeTrans *ptr8 = new HashNodeTrans('H', new History);
 
-     HashNodeTrans *ptr4 = new HashNodeTrans('B', new Buy);
-     HashNodeTrans *ptr5 = new HashNodeTrans('S', new Sell);
-     HashNodeTrans *ptr6 = new HashNodeTrans('D', new Display);
-     HashNodeTrans *ptr7 = new HashNodeTrans('C', new CustomerTrans);
-     HashNodeTrans *ptr8 = new HashNodeTrans('H', new History);
-
-
-    vector<HashNodeTrans*> v1;
+    vector<HashNodeTrans *> v1;
     v1.push_back(ptr4);
     v1.push_back(ptr5);
     v1.push_back(ptr6);
@@ -58,7 +56,6 @@ Store::Store()
     ptr6 = nullptr;
     ptr7 = nullptr;
     ptr8 = nullptr;
-
 }
 
 //destructor
@@ -91,7 +88,7 @@ void Store::buildCustomerList(ifstream &infile)
         Customer *newPtr = new Customer(id, name);
         bstCustomers.insert(newPtr);
 
-        // update the transaction node here 
+        // update the transaction node here
     }
 }
 
@@ -111,13 +108,18 @@ void Store::buildInventory(ifstream &infile)
 
         char inventoryType = iT[0];
         Item *dummyPtr = HashMap.get(inventoryType);
-       
 
         if (dummyPtr == nullptr)
         {
             getline(infile, iT);
             continue;
         }
+
+        int qty;
+        string stringQTY;
+        getline(infile, stringQTY, ','); //get QTY
+        qty = atoi(stringQTY.c_str());
+        infile.get();                       //discard space
 
         // // for testing only on coins right now
         // if(inventoryType != 'S'){
@@ -129,7 +131,7 @@ void Store::buildInventory(ifstream &infile)
 
         dummyPtr = nullptr;
 
-        inventoryTrees[(newItem->id - 'A')].insert(newItem);
+        inventoryTrees[(newItem->id - 'A')].insert(newItem, qty);
     }
 }
 
@@ -143,30 +145,28 @@ void Store::processActions(ifstream &infile)
 
         string command;
 
-        if(infile.peek() != 'D'){
+        if (infile.peek() != 'D')
+        {
             getline(infile, command, ',');
             infile.get();
-        } else{
+        }
+        else
+        {
             getline(infile, command);
         }
 
-        char commandV = command[0];
-       
-        
-       Transaction *dummyPtr = HashMap.getTrans(commandV);
-
+        Transaction *dummyPtr = HashMap.getTrans(command[0]);
 
         if (dummyPtr == nullptr)
         {
             continue;
         }
 
-       dummyPtr->excute(infile,inventoryTrees, bstCustomers,custTransactionList, HashMap); 
+        dummyPtr->excute(infile, inventoryTrees, bstCustomers, custTransactionList, HashMap);
 
-       getline(infile, command);
+        getline(infile, command);
         dummyPtr = nullptr;
 
-        
         
     }
 }

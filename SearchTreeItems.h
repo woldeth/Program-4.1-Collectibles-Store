@@ -23,12 +23,15 @@ public:
     // Takse ptr to customer and creates node to put in BST
     // Preconditions: unique customer in bst
     // Postconditions: Nodes is inseerted in bst
-    bool insert(Item *ptr);
+    bool insert(Item *ptr, int qty);
+
+    void find(Item *i, bool buy);
 
 private:
     struct Node
     {
         Item *item;                                               // Pointer to customer object
+        int qty;
         Node *left;                                                   // Pointer to left child
         Node *right;                                                  // Pointer to right child
         Node(Item *i) : item(i), left(nullptr), right(nullptr) {} // Constructor to initialize node
@@ -40,7 +43,7 @@ private:
     // Takse ptr to customer and creates node to put in BST
     // Preconditions: unique customer in bst
     // Postconditions: Nodes is inseerted in bst
-    void insertPrivate(Item *ptr, Node *&node, bool &flag);
+    void insertPrivate(Item *ptr, Node *&node, bool &flag, int qty);
 
 
     ///--------------------------------- clear ------------------------------------
@@ -54,4 +57,9 @@ private:
     // // Preconditions: custTransactionList is populated with transactions
     // // Postconditions: All transactions will be printed inorder of alpha numeric of customer
     // const void traverseInorder() const;
+
+
+    void findPrivate(Node *&node, Item *i, bool buy);
+
+    
 };

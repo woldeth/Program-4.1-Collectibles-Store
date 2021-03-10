@@ -1,3 +1,4 @@
+
 #include "Buy.h"
 
 void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H)
@@ -14,7 +15,21 @@ void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeC
     getline(infile, inventoryType, ','); //get QTY
     //customerID = atoi(stringID.c_str());
 
-    cout << stringID<< " " << inventoryType[0] << endl;
+    cout << stringID << " " << inventoryType[0] << endl;
 
-    getline(infile, stringID); // testing
+    Item *dummyPtr = H.get(inventoryType[0]);
+
+    if (dummyPtr == nullptr)
+    {
+        getline(infile, inventoryType);
+    }
+
+    Item *newItem = dummyPtr->create(infile);
+
+    //getline(infile, stringID); // testing
+
+    inventoryItems[(newItem->id - 'A')].find(newItem, true);
+
+    delete newItem;
+    newItem = nullptr;
 }

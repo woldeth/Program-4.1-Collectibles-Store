@@ -20,10 +20,10 @@ protected:
     string type;
 
 public:
-    Coin() : Item('M', 0, 2021), grade(-1), type("?") {} // Constructor if nothing passed in
+    Coin() : Item('M', 2021), grade(-1), type("?") {} // Constructor if nothing passed in
 
     // Constructor with parameters
-    Coin(int q, int y, int g, string t) : Item('M', q, y), grade(g), type(t) {}
+    Coin(int y, int g, string t) : Item('M', y), grade(g), type(t) {}
 
     virtual ~Coin() {} // Destructor
 

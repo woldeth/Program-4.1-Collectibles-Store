@@ -21,10 +21,10 @@ protected:
     string manufacturer; 
 
 public:
-    SportCard() : Item('S', 0, 2021), grade("?"), player("?"), manufacturer("?") {} // Constructor if nothing passed in
+    SportCard() : Item('S', 2021), grade("?"), player("?"), manufacturer("?") {} // Constructor if nothing passed in
 
     // Constructor with parameters
-    SportCard(int q, int y, string g, string p, string m) : Item('S', q, y), grade(g), player(p), manufacturer(m) {}
+    SportCard(int y, string g, string p, string m) : Item('S', y), grade(g), player(p), manufacturer(m) {}
 
     virtual ~SportCard() {} // Destructor
 
