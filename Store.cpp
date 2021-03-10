@@ -61,11 +61,12 @@ Store::Store()
 //destructor
 Store::~Store()
 {
-
     for (int i = 0; i < ALPHA; i++)
     {
         inventoryTrees[i].~SearchTreeItems();
     }
+
+ 
 }
 
 ///--------------------------------- BuildCustomerList ------------------------------------
@@ -88,7 +89,7 @@ void Store::buildCustomerList(ifstream &infile)
         Customer *newPtr = new Customer(id, name);
         bstCustomers.insert(newPtr);
 
-        // update the transaction node here
+        custTransactionList[id].cust = newPtr;
     }
 }
 
@@ -167,6 +168,6 @@ void Store::processActions(ifstream &infile)
         getline(infile, command);
         dummyPtr = nullptr;
 
-        
+
     }
 }

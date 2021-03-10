@@ -30,6 +30,19 @@ void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeC
 
     inventoryItems[(newItem->id - 'A')].find(newItem, true);
 
-    delete newItem;
-    newItem = nullptr;
+    // delete newItem;
+    // newItem = nullptr;
+
+    if(custTransactionList[customerID].head == nullptr){
+         custTransactionList[customerID].head = new transactionNode(newItem,'B');
+         return;
+    }
+
+    transactionNode *cur = custTransactionList[customerID].head;
+    
+    while(cur->next != nullptr){
+        cur = cur->next;
+    }
+     cur->next = new transactionNode(newItem,'B');
+     //cur = nullptr;
 }

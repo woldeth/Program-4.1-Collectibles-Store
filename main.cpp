@@ -47,7 +47,7 @@ int main()
     st1.processActions(infileCommands);
 
 
-    cout << endl;
+  
 
 
 

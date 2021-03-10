@@ -28,11 +28,15 @@ struct transactionNode
 //Node to hold customer obj and Head of transaction list.
 struct customerNode
 {
-    customerNode() : cust(nullptr), head(nullptr){}
-    customerNode(Customer* c) : cust(c), head(nullptr) {}
     Customer *cust;        // customer ptr
     transactionNode *head; // first transaction/ head pointer
+    customerNode() : cust(nullptr), head(nullptr){}
+    customerNode(Customer* c) : cust(c), head(nullptr) {}
+   
 };
+
+
+
 
 class Transaction
 {
