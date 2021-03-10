@@ -66,6 +66,8 @@ Store::~Store()
         inventoryTrees[i].~SearchTreeItems();
     }
 
+    
+
  
 }
 
