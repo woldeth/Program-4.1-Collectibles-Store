@@ -20,6 +20,7 @@ struct transactionNode
 {
     transactionNode() : item(nullptr) , transType('?'), next(nullptr) {}
     transactionNode(Item* i, char c) : item(i) , transType(c), next(nullptr) {}
+    ~transactionNode(){}
     Item *item;               // pointer to item that was sold
     char transType;      // type of transaction (Buy or Sell)
     transactionNode *next; // next transaction for the customer
@@ -32,6 +33,7 @@ struct customerNode
     transactionNode *head; // first transaction/ head pointer
     customerNode() : cust(nullptr), head(nullptr){}
     customerNode(Customer* c) : cust(c), head(nullptr) {}
+    ~customerNode(){}
    
 };
 

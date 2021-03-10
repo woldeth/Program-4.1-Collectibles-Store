@@ -23,7 +23,7 @@ void SearchTreeCustomers::clear(Node *&node)
 
     clear(node->left);
     clear(node->right);
-
+    
     delete node->item;
     node->item = nullptr;
 

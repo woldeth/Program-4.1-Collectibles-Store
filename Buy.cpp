@@ -44,5 +44,5 @@ void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeC
         cur = cur->next;
     }
      cur->next = new transactionNode(newItem,'B');
-     //cur = nullptr;
+     cur = nullptr;
 }
