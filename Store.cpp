@@ -173,7 +173,7 @@ void Store::processActions(ifstream &infile)
             getline(infile, command);
         }
 
-       cout << "command ----> " << command[0] << endl;
+       
         
         Transaction *dummyPtr = HashMap.getTrans(command[0]);
 
@@ -183,11 +183,13 @@ void Store::processActions(ifstream &infile)
             continue;
         }
 
+        cout << "-------------------->" << command[0] << "<--------------------" << endl;
         // dummPtr->excute(this)
         dummyPtr->excute(infile, inventoryTrees, bstCustomers, custTransactionList, HashMap);
 
         //getline(infile, command);
         dummyPtr = nullptr;
+        cout << endl;
 
 
     }

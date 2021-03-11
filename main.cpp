@@ -47,10 +47,6 @@ int main()
     st1.processActions(infileCommands);
 
 
-  
-
-
-
 
     return 0;
 }
