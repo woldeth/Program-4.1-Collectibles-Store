@@ -79,14 +79,14 @@ void SearchTreeItems::findPrivate(Node *&node, Item *i, bool buy)
         if (buy == true)
         {
             node->qty = node->qty + 1;
-            cout << "item bought" << endl;
+            //cout << "item bought" << endl;
         }
         else if (buy == false && node->qty > 0)
         {
             node->qty = node->qty - 1;
-            cout << "item sold" << endl;
+            //cout << "item sold" << endl;
         } else {
-            cout << "not in inventory" << endl;
+            //cout << "not in inventory" << endl;
         }
     }
     else if (*i < *(node->item))

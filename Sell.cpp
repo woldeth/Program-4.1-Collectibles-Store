@@ -15,7 +15,7 @@ void Sell::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTree
     getline(infile, inventoryType, ','); //get QTY
     //customerID = atoi(stringID.c_str());
 
-    cout << stringID << " " << inventoryType[0] << endl;
+    //cout << stringID << " " << inventoryType[0] << endl;
 
     Item *dummyPtr = H.get(inventoryType[0]);
 
