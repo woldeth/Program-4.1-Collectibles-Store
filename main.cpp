@@ -1,9 +1,19 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
+// Date: March 11th, 2021
 // File Name: main.cpp
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// This code is the main driver of the program that will create the store
+// that will manage the inventory and record the various transactions that
+// occur in the program
+//
+// Assumptions:
+//   -- a text file named "hw4inventory.txt", "hw4customers.txt"
+//   and "hw4commands.txt" exists in the same directory
+//
+//   -- Files are in the correct format to properly work
+//---------------------------------------------------------------------------
 
 #include <iostream>
 #include <fstream>
@@ -33,6 +43,7 @@ int main()
         return 1;
     }
 
+    // Creare infile for the commands
     ifstream infileCommands("hw4commands.txt");
     if (!infileCommands)
     {
@@ -42,11 +53,9 @@ int main()
 
     Store st1; // create the store object
 
-    st1.buildInventory(infileInventory); // creates all customer object and stores in bst
-    st1.buildCustomerList(infileCustomers);
-    st1.processActions(infileCommands);
-
-
+    st1.buildInventory(infileInventory);    // initatilizes the inventory from text file
+    st1.buildCustomerList(infileCustomers); // initatilizes the customer list from text file
+    st1.processActions(infileCommands);     // Process various commands from text file
 
     return 0;
 }
