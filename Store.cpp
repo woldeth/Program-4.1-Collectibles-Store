@@ -130,6 +130,7 @@ void Store::buildInventory(ifstream &infile)
 
         if (dummyPtr == nullptr)
         {
+            //cout << "not found" << endl;
             getline(infile, iT);
             continue;
         }
@@ -164,7 +165,7 @@ void Store::processActions(ifstream &infile)
 
         string command;
 
-        if (infile.peek() != 'D')
+        if (infile.peek() != 'D' && infile.peek() != 'H')
         {
             getline(infile, command, ',');
             infile.get();
@@ -174,6 +175,8 @@ void Store::processActions(ifstream &infile)
             getline(infile, command);
         }
 
+       cout << command[0] << "<----" << endl;
+        
         Transaction *dummyPtr = HashMap.getTrans(command[0]);
 
         if (dummyPtr == nullptr)
@@ -183,7 +186,7 @@ void Store::processActions(ifstream &infile)
 
         dummyPtr->excute(infile, inventoryTrees, bstCustomers, custTransactionList, HashMap);
 
-        getline(infile, command);
+        //getline(infile, command);
         dummyPtr = nullptr;
 
 

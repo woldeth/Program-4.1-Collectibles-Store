@@ -8,7 +8,11 @@
 #pragma once
 
 #include <iostream>
-#include "Customer.h"
+
+#include "Transaction.h"
+//#include "Customer.h"
+
+//class Customer;
 
 using namespace std;
 
@@ -24,6 +28,8 @@ public:
     // Preconditions: unique customer in bst
     // Postconditions: Nodes is inseerted in bst
     bool insert(Customer *ptr);
+
+    void history(customerNode custTransactionList[]) const;
 
 private:
     struct Node
@@ -54,4 +60,7 @@ private:
     // // Preconditions: custTransactionList is populated with transactions
     // // Postconditions: All transactions will be printed inorder of alpha numeric of customer
     // const void traverseInorder() const;
+
+
+    void historyPrivate(Node *node, customerNode custTransactionList[]) const;
 };

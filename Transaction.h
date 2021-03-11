@@ -12,6 +12,7 @@
 #include "SearchTreeCustomers.h"
 //#include "HashTable.h"
 class HashTable;
+class SearchTreeCustomers;
 
 
 using namespace std;

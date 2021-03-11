@@ -98,3 +98,28 @@ void SearchTreeItems::findPrivate(Node *&node, Item *i, bool buy)
         findPrivate(node->right, i, buy); // traverse right
     }
 }
+
+
+
+void SearchTreeItems::display() const {
+    displayPrivate(root);
+}
+
+
+void SearchTreeItems::displayPrivate(Node *node) const{
+
+        // node is empty
+    if (node == nullptr)
+    {
+        return;
+    }
+
+    //inorder traversal
+    displayPrivate(node->left);
+
+    cout << "QTY: " << node->qty << "\t";
+    node->item->toString();
+    
+    displayPrivate(node->right);
+
+}

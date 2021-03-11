@@ -21,5 +21,5 @@ public:
     Display() : Transaction('D', -1) {}
     Display(int cust) : Transaction('D', cust) {}
     virtual ~Display() {} 
-    virtual void excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H){}
+    virtual void excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H);
 };

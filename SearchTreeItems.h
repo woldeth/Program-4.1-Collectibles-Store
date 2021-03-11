@@ -27,6 +27,8 @@ public:
 
     void find(Item *i, bool buy);
 
+     void display() const;
+
 private:
     struct Node
     {
@@ -60,6 +62,9 @@ private:
 
 
     void findPrivate(Node *&node, Item *i, bool buy);
+
+
+    void displayPrivate(Node *node) const;
 
     
 };

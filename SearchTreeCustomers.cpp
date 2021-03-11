@@ -7,8 +7,6 @@
 
 #include "SearchTreeCustomers.h"
 
-
-
 SearchTreeCustomers::~SearchTreeCustomers()
 {
     clear(root);
@@ -23,7 +21,7 @@ void SearchTreeCustomers::clear(Node *&node)
 
     clear(node->left);
     clear(node->right);
-    
+
     delete node->item;
     node->item = nullptr;
 
@@ -40,7 +38,6 @@ bool SearchTreeCustomers::insert(Customer *ptr)
 
 void SearchTreeCustomers::insertPrivate(Customer *ptr, Node *&node, bool &flag)
 {
-
     // Tree is empty
     if (node == nullptr)
     {
@@ -62,4 +59,39 @@ void SearchTreeCustomers::insertPrivate(Customer *ptr, Node *&node, bool &flag)
     {
         insertPrivate(ptr, node->right, flag); // traverse right
     }
+}
+
+void SearchTreeCustomers::history(customerNode custTransactionList[]) const
+{
+    historyPrivate(root, custTransactionList);
+}
+
+void SearchTreeCustomers::historyPrivate(Node *node, customerNode custTransactionList[]) const
+{
+
+    if (node == nullptr)
+    {
+        return;
+    }
+
+    //inorder traversal
+    historyPrivate(node->left, custTransactionList);
+    if (custTransactionList[node->item->getID()].head == nullptr) { 
+        node->item->toString();
+        cout << "- no transactions" << endl;
+        cout << endl;
+        return;
+    } 
+   
+    node->item->toString();
+    transactionNode *cur = custTransactionList[node->item->getID()].head;
+    while (cur != nullptr)
+    {
+        cout << "transaction type: " << cur->transType << " --> ";
+        cur->item->toString();
+        cur = cur->next;
+    }
+    cout << endl;
+
+    historyPrivate(node->right, custTransactionList);
 }

@@ -13,9 +13,7 @@
 // Postconditions: Prints out the description for a coin
 void ComicBook::toString() const
 {
-    cout <<", ID: " << id << ", YEAR: " << year
-         << ", GRADE: " << grade << ", Title: " << title
-         << ", PUBLISHER: " << publisher << endl;
+    cout << id << ", " << year<< ",  " << grade << ", " << title << ", " << publisher << endl;
 }
 
 //Comics are sorted first by publisher, then by title, then by year, then by grade

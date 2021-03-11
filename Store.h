@@ -18,10 +18,10 @@
 #include "SportCard.cpp"
 #include "Transaction.h"
 #include "Buy.cpp"
-#include "Sell.h"
-#include "Display.h"
-#include "CustomerTrans.h"
-#include "History.h"
+#include "Sell.cpp"
+#include "Display.cpp"
+#include "CustomerTrans.cpp"
+#include "History.cpp"
 
 const int ALPHA = 26; //number of letters
 

@@ -39,4 +39,8 @@ public:
     // Preconditions: 
     // Postconditions: 
     bool operator==(const Customer &rhs) const; 
+
+    void toString() const;
+
+    int getID() const;
 };

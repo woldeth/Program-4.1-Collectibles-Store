@@ -21,7 +21,8 @@ void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeC
 
     if (dummyPtr == nullptr)
     {
-        getline(infile, inventoryType);
+        getline(infile, inventoryType, '\n');
+        return;
     }
 
     Item *newItem = dummyPtr->create(infile);

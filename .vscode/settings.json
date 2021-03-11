@@ -8,6 +8,7 @@
         "chrono": "cpp",
         "new": "cpp",
         "iostream": "cpp",
-        "__nullptr": "cpp"
+        "__nullptr": "cpp",
+        "string": "cpp"
     }
 }

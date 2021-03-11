@@ -13,9 +13,7 @@
 // Postconditions: Prints out the description for a coin
 void SportCard::toString() const
 {
-    cout << ", ID: " << id << ", YEAR: " << year
-         << ", GRADE: " << grade << ", Player: " << player
-         << ", Manufacturer: " << manufacturer << endl;
+    cout << id << ", " << year << ", "<< grade << ", "<< player<< ", " << manufacturer << endl;
 }
 
 // player, then by year, then by manufacturer, then by grade

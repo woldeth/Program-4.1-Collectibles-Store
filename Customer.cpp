@@ -37,3 +37,13 @@ bool Customer::operator==(const Customer &rhs) const
 {
     return (name == rhs.name && id == rhs.id);
 }
+
+
+void Customer::toString() const{
+    cout << "Customer ID: " << id << " " << "Name: " << name << endl;
+}
+
+
+int Customer::getID() const {
+    return id;
+}

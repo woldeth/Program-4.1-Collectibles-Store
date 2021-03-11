@@ -15,8 +15,7 @@
 // Postconditions: Prints out the description for a coin
 void Coin::toString() const
 {
-    cout << "ID: " << id << ", YEAR: " << year
-         << ", GRADE: " << grade << ", TYPE: " << type << endl;
+    cout << id << ", " << year << ", "<< grade << ", " << type << endl;
 }
 
 ///--------------------------------- operator< ------------------------------------
