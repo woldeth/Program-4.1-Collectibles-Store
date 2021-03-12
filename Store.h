@@ -24,7 +24,7 @@
 #include "Customer.cpp"
 #include "SearchTreeCustomers.cpp"
 #include "SearchTreeItems.cpp"
-#include "HashTable.h"
+#include "HashTable.cpp"
 #include "Coin.cpp"
 #include "ComicBook.cpp"
 #include "SportCard.cpp"
