@@ -25,6 +25,10 @@ public:
     // Postconditions: Nodes is inseerted in bst
     bool insert(Item *ptr, int qty);
 
+    ///--------------------------------- find ------------------------------------
+    // Traverse the customer tree to find the specfic item for buy or sell
+    // Preconditions: The tree to traverse must be passed in to 
+    // Postconditions: All transactions will be printed inorder of alpha numeric of customer
     void find(Item *i, bool buy);
 
      void display() const;
@@ -54,13 +58,10 @@ private:
     // Postconditions: bst is cleared out completely
     void clear(Node *&node);
 
-    // ///--------------------------------- traverseInorder ------------------------------------
-    // // Traverse the customer tree to print out all transactions
-    // // Preconditions: custTransactionList is populated with transactions
-    // // Postconditions: All transactions will be printed inorder of alpha numeric of customer
-    // const void traverseInorder() const;
-
-
+    ///--------------------------------- find ------------------------------------
+    // Traverse the customer tree to print out all transactions
+    // Preconditions: custTransactionList is populated with transactions
+    // Postconditions: All transactions will be printed inorder of alpha numeric of customer
     void findPrivate(Node *&node, Item *i, bool buy);
 
 

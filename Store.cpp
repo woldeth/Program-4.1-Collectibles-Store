@@ -122,14 +122,29 @@ void Store::buildCustomerList(ifstream &infile)
 
         string idAndName;
         getline(infile, idAndName);
-
         int id = stoi(idAndName.substr(0, 3));
+
+        if (id > 1000 || id < 0)
+        {
+            cout << "invalid customer" << endl;
+            return;
+        }
+
         string name = idAndName.substr(idAndName.find(",") + 2);
 
         Customer *newPtr = new Customer(id, name); // create new customer
-        bstCustomers.insert(newPtr);               // insert new customers
+       
 
-        custTransactionList[id].cust = newPtr; // insert customer into the transaction position
+        if(custTransactionList[id].cust == nullptr){
+            custTransactionList[id].cust = newPtr; // insert customer into the transaction position
+        }else{
+           // cout << "ID has already been used by another customer" << endl;
+            delete newPtr;
+            newPtr = nullptr;
+            return;
+        }
+
+         bstCustomers.insert(newPtr);               // insert new customers
     }
 }
 

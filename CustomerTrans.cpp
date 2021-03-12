@@ -18,6 +18,7 @@ void CustomerTrans::excute(ifstream &infile, SearchTreeItems inventoryItems[], S
             return;
         }else {
             cout << "Customer ID: " << stringID << " " << "Name: UNKNOWN" << endl;
+            return;
         }
     }
 

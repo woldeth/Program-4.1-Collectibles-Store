@@ -1,9 +1,16 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
-// File Name: SearchTreeCustomers.h
+// Date: March 11, 2021
+// File Name: SearchTreeCustomers.cpp
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// SearchTreeCustomers class:
+//   Implements the search tree specifcally for customers using the following
+//   methods: insert(), clears(), histoy()
+//
+//  The search tree is used to keep the customer during traversal. The customer
+//  search tree will be use with other items to perfrom various commands
+//---------------------------------------------------------------------------
 
 #include "SearchTreeCustomers.h"
 
@@ -12,6 +19,10 @@ SearchTreeCustomers::~SearchTreeCustomers()
     clear(root);
 }
 
+///--------------------------------- clear ------------------------------------
+// clears all dynamicall allocated memory
+// Preconditions: none
+// Postconditions: bst is cleared out completely
 void SearchTreeCustomers::clear(Node *&node)
 {
     if (node == nullptr)
@@ -35,7 +46,10 @@ bool SearchTreeCustomers::insert(Customer *ptr)
     insertPrivate(ptr, root, flag);
     return flag;
 }
-
+///--------------------------------- Insert ------------------------------------
+// Takse ptr to customer and creates node to put in BST
+// Preconditions: unique customer in bst
+// Postconditions: Nodes is inseerted in bst
 void SearchTreeCustomers::insertPrivate(Customer *ptr, Node *&node, bool &flag)
 {
     // Tree is empty
@@ -61,11 +75,19 @@ void SearchTreeCustomers::insertPrivate(Customer *ptr, Node *&node, bool &flag)
     }
 }
 
+///--------------------------------- history ------------------------------------
+// Traverse the customer tree to print out all transactions
+// Preconditions: custTransactionList is populated with transactions
+// Postconditions: All transactions will be printed inorder of alpha numeric of customer
 void SearchTreeCustomers::history(customerNode custTransactionList[]) const
 {
     historyPrivate(root, custTransactionList);
 }
 
+///--------------------------------- historyPrivate ------------------------------------
+// Traverse the customer tree to print out all transactions
+// Preconditions: custTransactionList is populated with transactions
+// Postconditions: All transactions will be printed inorder of alpha numeric of customer
 void SearchTreeCustomers::historyPrivate(Node *node, customerNode custTransactionList[]) const
 {
 
@@ -76,22 +98,26 @@ void SearchTreeCustomers::historyPrivate(Node *node, customerNode custTransactio
 
     //inorder traversal
     historyPrivate(node->left, custTransactionList);
-    if (custTransactionList[node->item->getID()].head == nullptr) { 
+
+    if (custTransactionList[node->item->getID()].head == nullptr)
+    {
         node->item->toString();
         cout << "- no transactions" << endl;
         cout << endl;
-        return;
-    } 
-   
-    node->item->toString();
-    transactionNode *cur = custTransactionList[node->item->getID()].head;
-    while (cur != nullptr)
-    {
-        cout << "transaction type: " << cur->transType << " --> ";
-        cur->item->toString();
-        cur = cur->next;
     }
-    cout << endl;
+    else
+    {
+
+        node->item->toString();
+        transactionNode *cur = custTransactionList[node->item->getID()].head;
+        while (cur != nullptr)
+        {
+            cout << "transaction type: " << cur->transType << " --> ";
+            cur->item->toString();
+            cur = cur->next;
+        }
+        cout << endl;
+    }
 
     historyPrivate(node->right, custTransactionList);
 }
