@@ -21,9 +21,9 @@ class Buy : public Transaction
 {
 
 public:
-    Buy() : Transaction('B', -1) {}           // dummy constructor
-    Buy(int cust) : Transaction('B', cust) {} // constructor with parameters
-    virtual ~Buy() {}                         //destructor
+    Buy() : Transaction('B', -1) {}           // Dummy constructor
+    Buy(int cust) : Transaction('B', cust) {} // Constructor with parameters
+    virtual ~Buy() {}                         // Destructor
 
     ///--------------------------------- excute ------------------------------------
     // Buys a items that is passed into the infile stream
