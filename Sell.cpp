@@ -1,6 +1,20 @@
+// ------------------------------------------------------------------------
+// Name: Tomas H Woldemichael
+// Date: March 11, 2021
+// File Name: Sell.cpp
+// Title: PROGRAM 4
+// -------------------------------------------------------------------------
+// Sell class:
+//   Inherits from transaction class and defines the excute method to
+//   decrement the amount of items in the searchtree of items.
+//---------------------------------------------------------------------------
 
 #include "Sell.h"
 
+///--------------------------------- excute ------------------------------------
+// Sell a items that is passed into the infile stream
+// Preconditions: Item must already exist in the search tree of items
+// Postconditions: The item will be decrement countin the searchtree of items
 void Sell::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H)
 {
     string stringID;
@@ -12,10 +26,7 @@ void Sell::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTree
     customerID = atoi(stringID.c_str());
     infile.get();
 
-    getline(infile, inventoryType, ','); //get QTY
-    //customerID = atoi(stringID.c_str());
-
-    //cout << stringID << " " << inventoryType[0] << endl;
+    getline(infile, inventoryType, ','); //get type
 
     Item *dummyPtr = H.get(inventoryType[0]);
 
@@ -27,23 +38,21 @@ void Sell::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTree
 
     Item *newItem = dummyPtr->create(infile);
 
-    //getline(infile, stringID); // testing
-
     inventoryItems[(newItem->id - 'A')].find(newItem, false);
 
-    // delete newItem;
-    // newItem = nullptr;
-
-    if(custTransactionList[customerID].head == nullptr){
-         custTransactionList[customerID].head = new transactionNode(newItem,'S');
-         return;
+    // record transaction
+    if (custTransactionList[customerID].head == nullptr)
+    {
+        custTransactionList[customerID].head = new transactionNode(newItem, 'S');
+        return;
     }
 
     transactionNode *cur = custTransactionList[customerID].head;
-    
-    while(cur->next != nullptr){
+
+    while (cur->next != nullptr)
+    {
         cur = cur->next;
     }
-     cur->next = new transactionNode(newItem,'S');
-     cur = nullptr;
+    cur->next = new transactionNode(newItem, 'S');
+    cur = nullptr;
 }

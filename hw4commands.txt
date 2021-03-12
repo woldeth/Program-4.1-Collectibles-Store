@@ -5,7 +5,9 @@ B, 456, M, 1913, 70, Liberty Nickel
 C, 456
 X, 999, Z, 1986, Raging, Metallica, Master of Puppets
 S, 000, Q, 2112, Gnarly, Windows, Microsoft
-
+B, 456, M, 1913, 70, Liberty Nickel
+D
+H
 
 
 

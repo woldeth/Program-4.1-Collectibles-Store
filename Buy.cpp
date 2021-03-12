@@ -1,6 +1,20 @@
+// ------------------------------------------------------------------------
+// Name: Tomas H Woldemichael
+// Date: March 11, 2021
+// File Name: Buy.h
+// Title: PROGRAM 4
+// -------------------------------------------------------------------------
+// Buy class:
+//   Inherits from transaction class and defines the excute method to
+//   increment the amount of items in the searchtree of items.
+//---------------------------------------------------------------------------
 
 #include "Buy.h"
 
+///--------------------------------- excute ------------------------------------
+// Buys a items that is passed into the infile stream
+// Preconditions: Item must already exist in the search tree of items
+// Postconditions: The item will be incremented in the searchtree of items
 void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeCustomers &stCustomers, customerNode custTransactionList[], HashTable &H)
 {
     string stringID;
@@ -13,9 +27,6 @@ void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeC
     infile.get();
 
     getline(infile, inventoryType, ','); //get QTY
-    //customerID = atoi(stringID.c_str());
-
-    //cout << stringID << " " << inventoryType[0] << endl;
 
     Item *dummyPtr = H.get(inventoryType[0]);
 
@@ -27,23 +38,20 @@ void Buy::excute(ifstream &infile, SearchTreeItems inventoryItems[], SearchTreeC
 
     Item *newItem = dummyPtr->create(infile);
 
-    //getline(infile, stringID); // testing
-
     inventoryItems[(newItem->id - 'A')].find(newItem, true);
 
-    // delete newItem;
-    // newItem = nullptr;
-
-    if(custTransactionList[customerID].head == nullptr){
-         custTransactionList[customerID].head = new transactionNode(newItem,'B');
-         return;
+    if (custTransactionList[customerID].head == nullptr)
+    {
+        custTransactionList[customerID].head = new transactionNode(newItem, 'B');
+        return;
     }
 
     transactionNode *cur = custTransactionList[customerID].head;
-    
-    while(cur->next != nullptr){
+
+    while (cur->next != nullptr)
+    {
         cur = cur->next;
     }
-     cur->next = new transactionNode(newItem,'B');
-     cur = nullptr;
+    cur->next = new transactionNode(newItem, 'B');
+    cur = nullptr;
 }
