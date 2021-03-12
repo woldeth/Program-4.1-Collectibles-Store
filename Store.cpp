@@ -1,15 +1,30 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
+// Date: March 11, 2021
 // File Name: Store.h
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// Store class:
+//   Implements Store class that manages all and stores inventory, customers.
+//   and various transactions using the following methods:
+//		buildCustomerList(), buildInventory(), processActions()
+//  The Store gets passed in an text files in the create format to build
+//  all data structures.
+//
+//  Assumptions:
+//	- Text file is in the proper format
+//	- No new inventory can be added once inventory is configured
+//	- No new customers can be added once customer list has been configured
+//---------------------------------------------------------------------------
 
 #include "Store.h"
 #include <string>
 #include <vector>
 
-//constructor
+///--------------------------------- Store ------------------------------------
+// Constructor Initalizes the Store class and placess dummy
+// Preconditions: None
+// Postconditions: Places all dummy items and commands in hash table
 Store::Store()
 {
     // Dummmy nodes for creations of inventory
@@ -22,7 +37,7 @@ Store::Store()
     v.push_back(ptr2);
     v.push_back(ptr3);
 
-    HashMap.initHashTable(v);
+    HashMap.initHashTable(v); // initaitlize the vector in HashTable class
 
     delete ptr1;
     delete ptr2;
@@ -44,7 +59,7 @@ Store::Store()
     v1.push_back(ptr7);
     v1.push_back(ptr8);
 
-    HashMap.initHashTransaction(v1);
+    HashMap.initHashTransaction(v1); // initaitlize the vector in HashTable class
 
     delete ptr4;
     delete ptr5;
@@ -58,33 +73,40 @@ Store::Store()
     ptr8 = nullptr;
 }
 
-//destructor
+///--------------------------------- ~Store ------------------------------------
+// Destructor
+// Preconditions: None
+// Postconditions: Clears all dynamically allocated memory
 Store::~Store()
 {
+    // Clears up memory for all the search trees
     for (int i = 0; i < ALPHA; i++)
     {
         inventoryTrees[i].~SearchTreeItems();
     }
 
+    // Clears the memory of the transacations nodes
     for (int i = 0; i < 1000; i++)
     {
-    
-        if(custTransactionList[i].head == nullptr){
+
+        if (custTransactionList[i].head == nullptr)
+        {
             continue;
         }
 
         transactionNode *cur = custTransactionList[i].head;
 
-        while(cur != nullptr ){
+        while (cur != nullptr)
+        {
             transactionNode *temp = cur;
             cur = cur->next;
+
             delete temp->item;
             temp->item = nullptr;
             delete temp;
             temp = nullptr;
         }
     }
- 
 }
 
 ///--------------------------------- BuildCustomerList ------------------------------------
@@ -104,10 +126,10 @@ void Store::buildCustomerList(ifstream &infile)
         int id = stoi(idAndName.substr(0, 3));
         string name = idAndName.substr(idAndName.find(",") + 2);
 
-        Customer *newPtr = new Customer(id, name);
-        bstCustomers.insert(newPtr);
+        Customer *newPtr = new Customer(id, name); // create new customer
+        bstCustomers.insert(newPtr);               // insert new customers
 
-        custTransactionList[id].cust = newPtr;
+        custTransactionList[id].cust = newPtr; // insert customer into the transaction position
     }
 }
 
@@ -122,39 +144,39 @@ void Store::buildInventory(ifstream &infile)
     {
 
         string iT;
-        getline(infile, iT, ',');
+        getline(infile, iT, ','); // get inventory type
         infile.get();
 
         char inventoryType = iT[0];
         Item *dummyPtr = HashMap.get(inventoryType);
 
+        // Not found in the hash table
         if (dummyPtr == nullptr)
         {
-            //cout << "not found" << endl;
             getline(infile, iT);
             continue;
         }
 
         int qty;
         string stringQTY;
-        getline(infile, stringQTY, ','); //get QTY
-        qty = atoi(stringQTY.c_str());
-        infile.get();                       //discard space
 
-        // // for testing only on coins right now
-        // if(inventoryType != 'S'){
-        //     getline(infile, iT);
-        //     continue;
-        // }
+        getline(infile, stringQTY, ',');
+        qty = atoi(stringQTY.c_str()); // get qty
+        infile.get();
 
-        Item *newItem = dummyPtr->create(infile);
+        Item *newItem = dummyPtr->create(infile); // create new item
 
         dummyPtr = nullptr;
 
-        inventoryTrees[(newItem->id - 'A')].insert(newItem, qty);
+        inventoryTrees[(newItem->id - 'A')].insert(newItem, qty); // insert new item into search tree
     }
 }
 
+///--------------------------------- ProcessActions ------------------------------------
+// Perfrorms the commands from the text file
+// Preconditions: infile has been successfully opened and the file contains
+//                 properly formated data (according to the program specs)
+// Postconditions: All commands will have been performed that are valid
 void Store::processActions(ifstream &infile)
 {
 
@@ -163,6 +185,7 @@ void Store::processActions(ifstream &infile)
 
         string command;
 
+        // Check if Display or history because they have a different format in txt
         if (infile.peek() != 'D' && infile.peek() != 'H')
         {
             getline(infile, command, ',');
@@ -173,10 +196,9 @@ void Store::processActions(ifstream &infile)
             getline(infile, command);
         }
 
-       
-        
-        Transaction *dummyPtr = HashMap.getTrans(command[0]);
+        Transaction *dummyPtr = HashMap.getTrans(command[0]); // get dummy item
 
+        // command was not found in hash table
         if (dummyPtr == nullptr)
         {
             getline(infile, command, '\n');
@@ -184,13 +206,11 @@ void Store::processActions(ifstream &infile)
         }
 
         cout << "-------------------->" << command[0] << "<--------------------" << endl;
-        // dummPtr->excute(this)
+
+        // Perform the command (Realize I could have passed in This )
         dummyPtr->excute(infile, inventoryTrees, bstCustomers, custTransactionList, HashMap);
 
-        //getline(infile, command);
         dummyPtr = nullptr;
         cout << endl;
-
-
     }
 }
