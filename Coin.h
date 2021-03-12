@@ -1,10 +1,16 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
+// Date: March 11, 2021
 // File Name: Coin.h
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
-
+// Coin class:
+//   Implements the coin item class holds the definition of this itme 
+//   usings the following methods:
+//		toString, operator<, operator== , create
+//  Assumptions:
+//	- Definitions will be gathered from the text file 
+//---------------------------------------------------------------------------
 #pragma once
 #include <iostream>
 #include <string>
@@ -16,11 +22,12 @@ using namespace std;
 class Coin : public Item
 {
 protected:
-    int grade;
-    string type;
+    int grade;          // Grade of the coin
+    string type;        // Type of the coin
 
 public:
-    Coin() : Item('M', 2021), grade(-1), type("?") {} // Constructor if nothing passed in
+    // Constructor if nothing passed in
+    Coin() : Item('M', 2021), grade(-1), type("?") {} 
 
     // Constructor with parameters
     Coin(int y, int g, string t) : Item('M', y), grade(g), type(t) {}
@@ -45,7 +52,10 @@ public:
     // Postconditions: Determines if objs are equal reuturn true if so
     virtual bool operator==(const Item &rhs) const;
 
-
+    ///--------------------------------- Create -----------------------------------------
+    // creates a new item and returns it.
+    // Preconditions: None
+    // Postconditions: Create and returns a new item
     virtual Item* create(ifstream &infile); 
 
 

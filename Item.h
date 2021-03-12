@@ -1,29 +1,36 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: Feb 11, 2021
+// Date: March 11, 2021
 // File Name: Item.h
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// Item class:
+//   Implements the abstract item class that holds the base line characterstics
+//   of an item usings the following methods:
+//		toString, operator<, operator== , create
+//
+//  Assumptions:
+//	- Abstract base class
+//	- Other items will inherit and update membor variables
+//---------------------------------------------------------------------------
 
 #pragma once
 #include <iostream>
 
 using namespace std;
 
-// Base class
 class Item
 {
 
 protected:
     int year; // integer year
-   // int qty;  // amount of this item in inventory
 
 public:
-    char id;  // Coin (M), Comic (C) or Card (S)
-    
-    Item() : id('?'), year(2021){}
-    Item(char i, int y) : id(i), year(y){}
-    virtual ~Item() {} // deconstructor
+    char id; // Coin (M), Comic (C) or Card (S)
+
+    Item() : id('?'), year(2021) {}         // constructor
+    Item(char i, int y) : id(i), year(y) {} // constructor with parameters
+    virtual ~Item() {}                      // deconstructor
 
     ///--------------------------------- toString ------------------------------------
     // Prints the description of the item
@@ -43,20 +50,9 @@ public:
     // Postconditions: Determines if objs are equal reuturn true if so
     virtual bool operator==(const Item &rhs) const = 0;
 
-
-    ///--------------------------------- operator== ------------------------------------
+    ///--------------------------------- Create ------------------------------------
     // creates a new item and returns it.
     // Preconditions: None
     // Postconditions: Create and returns a new item
-    virtual Item* create(ifstream &infile) = 0;
-
-    // ///--------------------------------- hash ------------------------------------
-    // // Creates a unique integer value from data member variables
-    // // Preconditions: None
-    // // Postconditions: returns a unique value that will be used in hash table for index
-    // virtual int hash() const
-    // {
-    //     //  hash value some integer value calculated from member variables
-    //     return 0; // hash value;
-    // }
+    virtual Item *create(ifstream &infile) = 0;
 };

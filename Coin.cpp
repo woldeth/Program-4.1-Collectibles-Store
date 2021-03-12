@@ -1,13 +1,18 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
-// File Name: Coin.h
+// Date: March 11, 2021
+// File Name: Coin.cpp
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// Coin class:
+//   Implements the coin item class holds the definition of this itme
+//   usings the following methods:
+//		toString, operator<, operator== , create
+//  Assumptions:
+//	- Definitions will be gathered from the text file
+//---------------------------------------------------------------------------
 
 #include "Coin.h"
-
-
 
 ///--------------------------------- toString ------------------------------------
 // Prints the description of the item
@@ -15,7 +20,7 @@
 // Postconditions: Prints out the description for a coin
 void Coin::toString() const
 {
-    cout << id << ", " << year << ", "<< grade << ", " << type << endl;
+    cout << id << ", " << year << ", " << grade << ", " << type << endl;
 }
 
 ///--------------------------------- operator< ------------------------------------
@@ -40,7 +45,7 @@ bool Coin::operator<(const Item &rhs) const
     }
     else if ((type == rhsS.type) && (year == rhsS.year) && (grade == rhsS.grade))
     {
-        cout << "we are the same coin" << endl;
+        cout << "Same coin" << endl;
         return false;
     }
 
@@ -58,33 +63,29 @@ bool Coin::operator==(const Item &rhs) const
     return (type == rhsS.type) && (year == rhsS.year) && (grade == rhsS.grade);
 }
 
+///--------------------------------- Create -----------------------------------------
+// creates a new item and returns it.
+// Preconditions: None
+// Postconditions: Create and returns a new item
 Item *Coin::create(ifstream &infile)
 {
-    
+
     int year;
     int grade;
-    string type; 
-    
+    string type;
+
     string stringYear;
     string stringGrade;
 
-    //int qty;
-    //string stringQTY;
-    // getline(infile, stringQTY, ','); //get QTY
-    // qty = atoi(stringQTY.c_str());
-    // infile.get();                       //discard space
-
     getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
-    infile.get();                       //discard space
+    infile.get(); //discard space
 
     getline(infile, stringGrade, ','); //get Grade
     grade = atoi(stringGrade.c_str());
-    infile.get();                       //discard space
+    infile.get(); //discard space
 
     getline(infile, type, '\n'); //get type
-
-    //cout << qty << " " << year << " " << grade << " " << type << endl;
 
     return new Coin(year, grade, type);
 }

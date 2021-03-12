@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
 // Date: March 11, 2021
-// File Name: Store.h
+// File Name: Store.cpp
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
 // Store class:
