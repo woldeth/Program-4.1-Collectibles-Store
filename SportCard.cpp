@@ -1,9 +1,17 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
+// Date: March 11, 2021
 // File Name: SportCard.cpp
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// SportCards class:
+//   Implements the sport cards item class holds the definition of this itme
+//   usings the following methods:
+//		toString, operator<, operator== , create
+//   Inheirts from the base class items
+//  Assumptions:
+//	- Definitions will be gathered from the text file
+//---------------------------------------------------------------------------
 
 #include "SportCard.h"
 
@@ -13,10 +21,9 @@
 // Postconditions: Prints out the description for a coin
 void SportCard::toString() const
 {
-    cout << id << ", " << year << ", "<< grade << ", "<< player<< ", " << manufacturer << endl;
+    cout << id << ", " << year << ", " << grade << ", " << player << ", " << manufacturer << endl;
 }
 
-// player, then by year, then by manufacturer, then by grade
 ///--------------------------------- operator< ------------------------------------
 // Defines lesser than operator for coin
 // Preconditions: Two objects of the same subclass
@@ -43,7 +50,7 @@ bool SportCard::operator<(const Item &rhs) const
     }
     else if ((player == rhsS.player) && (year == rhsS.year) && (manufacturer == rhsS.manufacturer) && (grade == rhsS.grade))
     {
-        cout << "we are the same SportCard" << endl;
+        cout << "Same SportCard" << endl;
         return false;
     }
 
@@ -61,20 +68,19 @@ bool SportCard::operator==(const Item &rhs) const
     return (player == rhsS.player) && (year == rhsS.year) && (manufacturer == rhsS.manufacturer) && (grade == rhsS.grade);
 }
 
+///--------------------------------- Create -----------------------------------------
+// creates a new item and returns it.
+// Preconditions: None
+// Postconditions: Create and returns a new item
+Item *SportCard::create(ifstream &infile)
+{
 
-Item* SportCard::create(ifstream &infile){
-    //int qty;
     int year;
     string grade;
-    string  player;
+    string player;
     string manufacturer;
 
-    //string stringQTY;
     string stringYear;
-
-    // getline(infile, stringQTY, ','); //get QTY
-    // qty = atoi(stringQTY.c_str());
-    // infile.get(); //discard space
 
     getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
@@ -87,9 +93,6 @@ Item* SportCard::create(ifstream &infile){
     infile.get();
 
     getline(infile, manufacturer, '\n'); //get Grade
-
-    //cout << qty << " " << year << " " << grade << " " << player << " " << manufacturer << endl;
-  
 
     return new SportCard(year, grade, player, manufacturer);
 }

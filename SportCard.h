@@ -1,9 +1,17 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
+// Date: March 11, 2021
 // File Name: SportCard.h
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// SportCards class:
+//   Implements the sport cards item class holds the definition of this itme
+//   usings the following methods:
+//		toString, operator<, operator== , create
+//   Inheirts from the base class items
+//  Assumptions:
+//	- Definitions will be gathered from the text file
+//---------------------------------------------------------------------------
 
 #pragma once
 #include <iostream>
@@ -18,7 +26,7 @@ class SportCard : public Item
 protected:
     string grade;
     string player;
-    string manufacturer; 
+    string manufacturer;
 
 public:
     SportCard() : Item('S', 2021), grade("?"), player("?"), manufacturer("?") {} // Constructor if nothing passed in
@@ -46,6 +54,9 @@ public:
     // Postconditions: Determines if objs are equal reuturn true if so
     virtual bool operator==(const Item &rhs) const;
 
-
-    virtual Item* create(ifstream &infile);
+    ///--------------------------------- Create -----------------------------------------
+    // creates a new item and returns it.
+    // Preconditions: None
+    // Postconditions: Create and returns a new item
+    virtual Item *create(ifstream &infile);
 };
