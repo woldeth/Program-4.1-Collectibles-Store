@@ -1,9 +1,17 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
-// File Name: Coin.h
+// Date: March 11, 2021
+// File Name: ComicBook.cpp
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// CommicBook class:
+//   Implements the comic book item class holds the definition of this itme
+//   usings the following methods:
+//		toString, operator<, operator== , create
+//   Inherirts from the base class items
+//  Assumptions:
+//	- Definitions will be gathered from the text file
+//---------------------------------------------------------------------------
 
 #include "ComicBook.h"
 
@@ -13,7 +21,7 @@
 // Postconditions: Prints out the description for a coin
 void ComicBook::toString() const
 {
-    cout << id << ", " << year<< ", " << grade << ", " << title << ", " << publisher << endl;
+    cout << id << ", " << year << ", " << grade << ", " << title << ", " << publisher << endl;
 }
 
 //Comics are sorted first by publisher, then by title, then by year, then by grade
@@ -43,7 +51,7 @@ bool ComicBook::operator<(const Item &rhs) const
     }
     else if ((publisher == rhsS.publisher) && (title == rhsS.title) && (year == rhsS.year) && (grade == rhsS.grade))
     {
-        cout << "we are the same ComicBook" << endl;
+        cout << "Same ComicBook" << endl;
         return false;
     }
 
@@ -61,35 +69,31 @@ bool ComicBook::operator==(const Item &rhs) const
     return ((publisher == rhsS.publisher) && (title < rhsS.title) && (year == rhsS.year) && (grade == rhsS.grade));
 }
 
+///--------------------------------- Create -----------------------------------------
+// creates a new item and returns it.
+// Preconditions: None
+// Postconditions: Create and returns a new item
 Item *ComicBook::create(ifstream &infile)
 {
-    //int qty;
+
     int year;
     string grade;
     string type;
     string publisher;
 
-    // string stringQTY;
-     string stringYear;
-
-    // getline(infile, stringQTY, ','); //get QTY
-    // qty = atoi(stringQTY.c_str());
-    // infile.get(); //discard space
+    string stringYear;
 
     getline(infile, stringYear, ','); //get Year
     year = atoi(stringYear.c_str());
     infile.get(); //discard space
 
-    getline(infile, grade, ','); //get Grade
+    getline(infile, grade, ','); //get grade
     infile.get();                //discard space
 
     getline(infile, type, ','); //get type
     infile.get();
 
-    getline(infile, publisher, '\n'); //get Grade
-
-    //cout << qty << " " << year << " " << grade << " " << type << " " << publisher << endl;
-  
+    getline(infile, publisher, '\n'); //get publisher
 
     return new ComicBook(year, grade, type, publisher);
 }

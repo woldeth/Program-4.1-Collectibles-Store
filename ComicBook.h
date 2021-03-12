@@ -1,9 +1,17 @@
 // ------------------------------------------------------------------------
 // Name: Tomas H Woldemichael
-// Date: March 6th, 2021
+// Date: March 11, 2021
 // File Name: ComicBook.h
 // Title: PROGRAM 4
 // -------------------------------------------------------------------------
+// CommicBook class:
+//   Implements the comic book item class holds the definition of this itme
+//   usings the following methods:
+//		toString, operator<, operator== , create
+//   Inherirts from the base class items
+//  Assumptions:
+//	- Definitions will be gathered from the text file
+//---------------------------------------------------------------------------
 
 #pragma once
 #include <iostream>
@@ -12,16 +20,15 @@
 
 using namespace std;
 
-//coin
 class ComicBook : public Item
 {
 protected:
     string grade;
     string title;
-    string publisher; 
+    string publisher;
 
 public:
-    ComicBook() : Item('C', 2021), grade("?"), title("?"), publisher("?") {} // Constructor if nothing passed in
+    ComicBook() : Item('C', 2021), grade("?"), title("?"), publisher("?") {} // Constructor
 
     // Constructor with parameters
     ComicBook(int y, string g, string t, string p) : Item('C', y), grade(g), title(t), publisher(p) {}
@@ -31,13 +38,13 @@ public:
     ///--------------------------------- toString ------------------------------------
     // Prints the description of the item
     // Preconditions: None
-    // Postconditions: Prints out the description for a coin
+    // Postconditions: Prints out the description for a comicbook
     virtual void toString() const;
 
     ///--------------------------------- operator< ------------------------------------
     // Defines lesser than operator for coin
     // Preconditions: Two objects of the same subclass
-    // Postconditions: Determines the lesser than Object from Coins
+    // Postconditions: Determines the lesser than Object from Comicbook
     virtual bool operator<(const Item &rhs) const;
 
     ///--------------------------------- operator== ------------------------------------
@@ -46,6 +53,9 @@ public:
     // Postconditions: Determines if objs are equal reuturn true if so
     virtual bool operator==(const Item &rhs) const;
 
-
-    virtual Item* create(ifstream &infile);
+    ///--------------------------------- Create -----------------------------------------
+    // creates a new item and returns it.
+    // Preconditions: None
+    // Postconditions: Create and returns a new item
+    virtual Item *create(ifstream &infile);
 };
