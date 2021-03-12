@@ -14,6 +14,10 @@
 
 #include "SearchTreeCustomers.h"
 
+///--------------------------------- ~SearchTreeCustomer ------------------------------------
+// Constructor
+// Preconditions: None
+// Postconditions: Clears all dynamicaly allocated nodes
 SearchTreeCustomers::~SearchTreeCustomers()
 {
     clear(root);
@@ -40,16 +44,21 @@ void SearchTreeCustomers::clear(Node *&node)
     node = nullptr;
 }
 
+///--------------------------------- Insert ------------------------------------
+// Takes ptr to customer and creates node to put in BST
+// Preconditions: unique customer in bst
+// Postconditions: Nodes is inseerted in bst if not found in bst
 bool SearchTreeCustomers::insert(Customer *ptr)
 {
     bool flag = false;
     insertPrivate(ptr, root, flag);
     return flag;
 }
-///--------------------------------- Insert ------------------------------------
-// Takse ptr to customer and creates node to put in BST
+
+///--------------------------------- InsertPrivate ------------------------------------
+// Private helper method takes ptr to customer and creates node to put in BST
 // Preconditions: unique customer in bst
-// Postconditions: Nodes is inseerted in bst
+// Postconditions: Nodes is inserted in bst if not found in tree
 void SearchTreeCustomers::insertPrivate(Customer *ptr, Node *&node, bool &flag)
 {
     // Tree is empty
@@ -60,7 +69,7 @@ void SearchTreeCustomers::insertPrivate(Customer *ptr, Node *&node, bool &flag)
         flag = true;
         return;
     }
-    else if (*ptr == *(node->item)) // char is already in tree
+    else if (*ptr == *(node->item))  // customer is already in the tree
     {
         cout << "customer already exist" << endl;
         return;

@@ -23,9 +23,17 @@ using namespace std;
 class SearchTreeCustomers
 {
 public:
-    //Constructors and destructor
+    ///--------------------------------- SearchTreeCustomer ------------------------------------
+    // Constructor
+    // Preconditions: None
+    // Postconditions: Initializes the search tree customer class 
     SearchTreeCustomers() : root(nullptr) {}
-    ~SearchTreeCustomers(); // Destructor
+
+    ///--------------------------------- ~SearchTreeCustomer ------------------------------------
+    // Constructor
+    // Preconditions: None
+    // Postconditions: Clears all dynamicaly allocated nodes 
+    ~SearchTreeCustomers(); 
 
     ///--------------------------------- Insert ------------------------------------
     // Takse ptr to customer and creates node to put in BST
