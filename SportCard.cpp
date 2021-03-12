@@ -89,10 +89,10 @@ Item *SportCard::create(ifstream &infile)
     getline(infile, grade, ','); //get Grade
     infile.get();                //discard space
 
-    getline(infile, player, ','); //get type
+    getline(infile, player, ','); //get player
     infile.get();
 
-    getline(infile, manufacturer, '\n'); //get Grade
+    getline(infile, manufacturer, '\n'); //get manufacturer
 
     return new SportCard(year, grade, player, manufacturer);
 }
